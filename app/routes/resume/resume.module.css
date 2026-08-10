@@ -1,0 +1,361 @@
+.resume {
+  padding-bottom: var(--space5XL);
+}
+
+.section {
+  padding-bottom: var(--space4XL);
+}
+
+/* ── Download Strip ─────────────────────────────── */
+.downloadStrip {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spaceM);
+  padding: var(--spaceM) var(--spaceXL);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: color-mix(in srgb, var(--background) 80%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--primary) 12%, transparent);
+  animation: stripReveal 0.6s var(--bezierFastoutSlowin) both;
+}
+
+@keyframes stripReveal {
+  from { opacity: 0; transform: translateY(-100%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.stripTitle {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.stripButtons {
+  display: flex;
+  gap: var(--spaceS);
+  flex-wrap: wrap;
+}
+
+.downloadBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 100px;
+  font-size: var(--fontSizeBodyS);
+  font-weight: var(--fontWeightMedium);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  border: none;
+  font-family: var(--fontStack);
+}
+
+.downloadBtnPrimary {
+  background: var(--accent);
+  color: rgb(0 0 0 / 0.9);
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.downloadBtnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.downloadBtnSecondary {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+.downloadBtnSecondary:hover {
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 45%, transparent);
+  transform: translateY(-2px);
+}
+
+/* ── Hero ────────────────────────────────────────── */
+.heroSection {
+  padding-bottom: var(--space3XL);
+}
+
+.heroName {
+  margin-bottom: var(--spaceS);
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    color-mix(in srgb, var(--primary) 65%, var(--accent)) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroTitle {
+  color: var(--accent) !important;
+  margin-bottom: var(--spaceL);
+}
+
+.contactRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spaceS);
+  margin-top: var(--spaceS);
+}
+
+.contactChip {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--fontSizeBodyS);
+  color: var(--textBody);
+  text-decoration: none;
+  padding: 6px 16px;
+  border-radius: 100px;
+  border: 1px solid color-mix(in srgb, var(--primary) 15%, transparent);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  font-family: var(--fontStack);
+}
+
+.contactChip:hover {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+/* ── Experience Card ─────────────────────────────── */
+.experienceCard {
+  position: relative;
+  padding: var(--spaceXL) var(--space2XL);
+  border-radius: 16px;
+  border: 1px solid color-mix(in srgb, var(--primary) 10%, transparent);
+  background: color-mix(in srgb, var(--backgroundLight) 40%, transparent);
+  transition: border-color 0.25s ease, background 0.25s ease;
+  margin-top: var(--spaceL);
+}
+
+.experienceCard:hover {
+  border-color: color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.accentBar {
+  position: absolute;
+  left: 0;
+  top: 20px;
+  bottom: 20px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 30%, transparent));
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spaceM);
+  margin-bottom: var(--spaceL);
+  flex-wrap: wrap;
+}
+
+.cardRole {
+  color: var(--textTitle) !important;
+}
+
+.cardCompany {
+  color: var(--accent) !important;
+  margin-top: 4px;
+}
+
+.cardDuration {
+  font-size: var(--fontSizeBodyS);
+  color: var(--textBody);
+  white-space: nowrap;
+  padding: 5px 14px;
+  border-radius: 100px;
+  background: color-mix(in srgb, var(--primary) 7%, transparent);
+  border: 1px solid color-mix(in srgb, var(--primary) 12%, transparent);
+  font-family: var(--fontStack);
+}
+
+.bulletList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spaceM);
+}
+
+.bulletItem {
+  display: flex;
+  gap: var(--spaceM);
+  align-items: flex-start;
+}
+
+.bulletDot {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: 10px;
+  opacity: 0.75;
+}
+
+/* ── Project Cards ────────────────────────────────── */
+.projectsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spaceL);
+  margin-top: var(--spaceL);
+}
+
+.projectCard {
+  padding: var(--spaceXL) var(--space2XL);
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--primary) 10%, transparent);
+  background: color-mix(in srgb, var(--backgroundLight) 40%, transparent);
+  text-decoration: none;
+  display: block;
+  transition: border-color 0.25s ease, transform 0.2s ease, background 0.25s ease;
+}
+
+.projectCard:hover {
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  transform: translateX(5px);
+  background: color-mix(in srgb, var(--accent) 4%, var(--background));
+}
+
+.projectCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spaceM);
+  margin-bottom: var(--spaceXS);
+  flex-wrap: wrap;
+}
+
+.projectName {
+  color: var(--accent) !important;
+  font-family: var(--monoFontStack) !important;
+}
+
+.projectPeriod {
+  font-family: var(--fontStack);
+}
+
+.projectStack {
+  font-family: var(--monoFontStack) !important;
+  margin-bottom: var(--spaceM);
+  display: block;
+}
+
+.projectBullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.projectBullet {
+  display: flex;
+  gap: var(--spaceS);
+  align-items: flex-start;
+}
+
+/* ── Skills ───────────────────────────────────────── */
+.skillsGroups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spaceXL);
+  margin-top: var(--spaceL);
+}
+
+.skillGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spaceS);
+}
+
+.tagsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  font-size: var(--fontSizeBodyS);
+  padding: 6px 18px;
+  border-radius: 100px;
+  border: 1px solid color-mix(in srgb, var(--primary) 18%, transparent);
+  color: var(--textBody);
+  background: color-mix(in srgb, var(--primary) 5%, transparent);
+  font-family: var(--fontStack);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.tag:hover {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+}
+
+.tagCore {
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+/* ── Education ────────────────────────────────────── */
+.educationGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spaceL);
+  margin-top: var(--spaceL);
+}
+
+.educationCard {
+  padding: var(--spaceXL) var(--space2XL);
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--primary) 10%, transparent);
+  background: color-mix(in srgb, var(--backgroundLight) 40%, transparent);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spaceXL);
+  flex-wrap: wrap;
+}
+
+.eduSchool {
+  color: var(--accent) !important;
+  margin-top: 4px;
+  display: block;
+}
+
+.eduIcon {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 768px) {
+  .downloadStrip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spaceS);
+  }
+  .stripButtons { width: 100%; }
+  .downloadBtn { flex: 1; justify-content: center; }
+  .cardHeader { flex-direction: column; }
+}

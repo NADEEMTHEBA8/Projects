@@ -1,0 +1,12 @@
+.diagramContainer {
+  width: 100%;
+  margin: var(--spaceXL) 0;
+  display: flex;
+  justify-content: center;
+}
+
+.diagramSvg {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+}

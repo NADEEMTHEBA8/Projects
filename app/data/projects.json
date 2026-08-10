@@ -1,0 +1,137 @@
+[
+  {
+    "id": "pyspark-skew-optimizer",
+    "title": "PySpark Skew Optimizer",
+    "category": "Data Engineering",
+    "description": "Automated key-salting and partition skew diagnostic utility for PySpark jobs, reducing shuffle spill by 74%.",
+    "tags": ["PySpark", "Apache Spark", "Key Salting", "FinOps"],
+    "github": "https://github.com/NADEEMTHEBA8/pyspark-skew-optimizer",
+    "url": "https://github.com/NADEEMTHEBA8/pyspark-skew-optimizer"
+  },
+  {
+    "id": "airflow-pandera-operator",
+    "title": "Airflow Pandera Shift-Left Operator",
+    "category": "Data Engineering",
+    "description": "Custom Apache Airflow operator enforcing Shift-Left Pandera schema validation gates before Bronze ingestion.",
+    "tags": ["Apache Airflow", "Pandera", "Shift-Left", "Python"],
+    "github": "https://github.com/NADEEMTHEBA8/airflow-pandera-operator",
+    "url": "https://github.com/NADEEMTHEBA8/airflow-pandera-operator"
+  },
+  {
+    "id": "duckdb-delta-cli",
+    "title": "DuckDB Delta CLI Query Tool",
+    "category": "Tools & Infrastructure",
+    "description": "Lightning-fast CLI tool for querying local Delta Lake transaction logs and Parquet files using embedded DuckDB.",
+    "tags": ["DuckDB", "Delta Lake", "CLI", "Rust/Python"],
+    "github": "https://github.com/NADEEMTHEBA8/duckdb-delta-cli",
+    "url": "https://github.com/NADEEMTHEBA8/duckdb-delta-cli"
+  },
+  {
+    "id": "debezium-kafka-connector-kit",
+    "title": "Debezium CDC Kafka Streaming Kit",
+    "category": "Streaming & CDC",
+    "description": "Ready-to-deploy Docker Compose boilerplate for PostgreSQL CDC streaming to Kafka with zero code injection.",
+    "tags": ["Debezium", "PostgreSQL", "Kafka", "CDC"],
+    "github": "https://github.com/NADEEMTHEBA8/debezium-kafka-connector-kit",
+    "url": "https://github.com/NADEEMTHEBA8/debezium-kafka-connector-kit"
+  },
+  {
+    "id": "dbt-data-quality-toolkit",
+    "title": "dbt Data Quality & Profiling Macros",
+    "category": "Data Engineering",
+    "description": "Reusable dbt macro package providing automated column nullability, distribution metrics, and schema freshness checks.",
+    "tags": ["dbt", "SQL", "Data Quality", "Snowflake"],
+    "github": "https://github.com/NADEEMTHEBA8/dbt-data-quality-toolkit",
+    "url": "https://github.com/NADEEMTHEBA8/dbt-data-quality-toolkit"
+  },
+  {
+    "id": "aws-finops-cost-exporter",
+    "title": "AWS FinOps Kinesis Cost Exporter",
+    "category": "Tools & Infrastructure",
+    "description": "Serverless Lambda pipeline collecting daily AWS Kinesis & Databricks cost telemetry into S3 analytical tables.",
+    "tags": ["AWS Lambda", "AWS Kinesis", "FinOps", "S3"],
+    "github": "https://github.com/NADEEMTHEBA8/aws-finops-cost-exporter",
+    "url": "https://github.com/NADEEMTHEBA8/aws-finops-cost-exporter"
+  },
+  {
+    "id": "redis-vector-search-fastapi",
+    "title": "Redis Vector Feature Serving API",
+    "category": "ML & Analytics",
+    "description": "Production FastAPI boilerplate serving high-dimensional vector embeddings from Redis in sub-10ms latency.",
+    "tags": ["FastAPI", "Redis Vector", "Python", "REST API"],
+    "github": "https://github.com/NADEEMTHEBA8/redis-vector-search-fastapi",
+    "url": "https://github.com/NADEEMTHEBA8/redis-vector-search-fastapi"
+  },
+  {
+    "id": "kinesis-auto-loader-bridge",
+    "title": "Databricks Auto Loader IoT Bridge",
+    "category": "Streaming & CDC",
+    "description": "Lightweight Python streaming bridge streaming IoT machine sensor payloads into Databricks Auto Loader.",
+    "tags": ["Databricks", "Auto Loader", "AWS Kinesis", "Delta Lake"],
+    "github": "https://github.com/NADEEMTHEBA8/kinesis-auto-loader-bridge",
+    "url": "https://github.com/NADEEMTHEBA8/kinesis-auto-loader-bridge"
+  },
+  {
+    "id": "mlflow-xgboost-registry",
+    "title": "MLflow Asymmetric Risk Registry",
+    "category": "ML & Analytics",
+    "description": "Automated MLflow tracking template for training, thresholding, and registering asymmetric XGBoost credit risk models.",
+    "tags": ["MLflow", "XGBoost", "Optuna", "Financial ML"],
+    "github": "https://github.com/NADEEMTHEBA8/mlflow-xgboost-registry",
+    "url": "https://github.com/NADEEMTHEBA8/mlflow-xgboost-registry"
+  },
+  {
+    "id": "fast-parquet-validator",
+    "title": "Fast Parquet Metadata Validator",
+    "category": "Tools & Infrastructure",
+    "description": "High-performance CLI tool validating Parquet file metadata, dictionary encodings, and row group statistics.",
+    "tags": ["Parquet", "CLI", "Python", "Data Quality"],
+    "github": "https://github.com/NADEEMTHEBA8/fast-parquet-validator",
+    "url": "https://github.com/NADEEMTHEBA8/fast-parquet-validator"
+  },
+  {
+    "id": "spark-iceberg-migration-tool",
+    "title": "Spark Hive-to-Iceberg Migration Tool",
+    "category": "Data Engineering",
+    "description": "PySpark migration script converting legacy Hive metastore tables to Apache Iceberg format with zero downtime.",
+    "tags": ["Apache Iceberg", "PySpark", "Hive Metastore", "BigData"],
+    "github": "https://github.com/NADEEMTHEBA8/spark-iceberg-migration-tool",
+    "url": "https://github.com/NADEEMTHEBA8/spark-iceberg-migration-tool"
+  },
+  {
+    "id": "great-expectations-airflow-dag",
+    "title": "Great Expectations Airflow Pipeline",
+    "category": "Data Engineering",
+    "description": "Automated data quality verification pipeline executing Great Expectations suites against cloud data warehouses.",
+    "tags": ["Great Expectations", "Airflow", "Data Quality", "Python"],
+    "github": "https://github.com/NADEEMTHEBA8/great-expectations-airflow-dag",
+    "url": "https://github.com/NADEEMTHEBA8/great-expectations-airflow-dag"
+  },
+  {
+    "id": "streamlit-lakehouse-dashboard",
+    "title": "Streamlit Lakehouse Metric Viewer",
+    "category": "ML & Analytics",
+    "description": "Interactive Streamlit dashboard visualizing Delta Lake 3.x Medallion layer status and partition health.",
+    "tags": ["Streamlit", "DuckDB", "Delta Lake", "Python"],
+    "github": "https://github.com/NADEEMTHEBA8/streamlit-lakehouse-dashboard",
+    "url": "https://github.com/NADEEMTHEBA8/streamlit-lakehouse-dashboard"
+  },
+  {
+    "id": "clickhouse-log-ingestor",
+    "title": "ClickHouse Real-Time Log Ingestor",
+    "category": "Streaming & CDC",
+    "description": "Real-time log aggregation pipeline pushing Nginx web logs into ClickHouse OLAP database for instant analytics.",
+    "tags": ["ClickHouse", "Vector", "Nginx", "OLAP"],
+    "github": "https://github.com/NADEEMTHEBA8/clickhouse-log-ingestor",
+    "url": "https://github.com/NADEEMTHEBA8/clickhouse-log-ingestor"
+  },
+  {
+    "id": "terraform-gcp-data-platform",
+    "title": "Terraform GCP Data Platform Module",
+    "category": "Tools & Infrastructure",
+    "description": "Declarative Terraform infrastructure code provisioning BigQuery datasets, GCS buckets, and Cloud Composer.",
+    "tags": ["Terraform", "GCP", "BigQuery", "Infrastructure as Code"],
+    "github": "https://github.com/NADEEMTHEBA8/terraform-gcp-data-platform",
+    "url": "https://github.com/NADEEMTHEBA8/terraform-gcp-data-platform"
+  }
+]

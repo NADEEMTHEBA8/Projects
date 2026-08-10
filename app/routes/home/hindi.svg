@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <defs>
+    <symbol id="hindi-project" viewBox="0 0 800 160">
+      <text x="0" y="120" font-family="'Noto Sans Devanagari', 'Kohinoor Devanagari', Mangal, Arial Unicode MS, sans-serif" font-size="120" font-weight="700" fill="currentColor">परियोजनाएं</text>
+    </symbol>
+    <symbol id="hindi-profile" viewBox="0 0 160 800">
+      <text x="30" y="700" font-family="'Noto Sans Devanagari', 'Kohinoor Devanagari', Mangal, Arial Unicode MS, sans-serif" font-size="110" font-weight="700" fill="currentColor" writing-mode="vertical-rl">प्रोफ़ाइल</text>
+    </symbol>
+  </defs>
+</svg>
