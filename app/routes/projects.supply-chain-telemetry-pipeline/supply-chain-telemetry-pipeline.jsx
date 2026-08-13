@@ -116,7 +116,7 @@ export const SupplyChainTelemetry = () => {
     <>
       <ProjectContainer>
         <ProjectBackground
-          opacity={isDark ? 0.5 : 0.8}
+          opacity={isDark ? 0.25 : 0.35}
           src={supplyChainTexture}
           srcSet={`${supplyChainTexture} 1280w`}
           placeholder={supplyChainTexture}

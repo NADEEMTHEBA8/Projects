@@ -113,7 +113,7 @@ export const RealtimeFraudFeatureStore = () => {
     <>
       <ProjectContainer>
         <ProjectBackground
-          opacity={isDark ? 0.5 : 0.8}
+          opacity={isDark ? 0.25 : 0.35}
           src={fraudTexture}
           srcSet={`${fraudTexture} 1280w`}
           placeholder={fraudTexture}

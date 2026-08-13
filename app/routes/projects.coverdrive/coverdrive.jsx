@@ -141,7 +141,7 @@ export const Coverdrive = () => {
     <>
       <ProjectContainer>
         <ProjectBackground
-          opacity={isDark ? 0.5 : 0.8}
+          opacity={isDark ? 0.25 : 0.35}
           src={coverdriveTexture}
           srcSet={`${coverdriveTexture} 1280w`}
           placeholder={coverdriveTexture}
