@@ -13,9 +13,18 @@ import { useEffect, useRef, useState } from 'react';
 import config from '~/config.json';
 import styles from './home.module.css';
 
-// Prefetch draco decoder wasm
+import macbookProGlb from '~/assets/macbook-pro.glb';
+
+// Prefetch 3D models and draco decoder wasm
 export const links = () => {
   return [
+    {
+      rel: 'preload',
+      href: macbookProGlb,
+      as: 'fetch',
+      type: 'model/gltf-binary',
+      crossOrigin: 'anonymous',
+    },
     {
       rel: 'prefetch',
       href: '/draco/draco_wasm_wrapper.js',

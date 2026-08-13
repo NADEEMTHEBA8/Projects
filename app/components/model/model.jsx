@@ -484,9 +484,9 @@ const Device = ({
 
           return animate(startRotation.x, endRotation.x, {
             type: 'spring',
-            delay: (300 * index + showDelay + 300) / 1000,
-            stiffness: 80,
-            damping: 20,
+            delay: (100 * index + showDelay) / 1000,
+            stiffness: 160,
+            damping: 16,
             restSpeed: 0.0001,
             restDelta: 0.0001,
             onUpdate: value => {

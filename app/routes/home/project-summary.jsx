@@ -113,7 +113,7 @@ export function ProjectSummary({
                   <Model
                     alt={model.alt}
                     cameraPosition={{ x: 0, y: 0, z: 9 }}
-                    showDelay={700}
+                    showDelay={0}
                     onLoad={handleModelLoad}
                     show={visible}
                     models={[
