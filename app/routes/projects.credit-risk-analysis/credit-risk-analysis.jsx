@@ -291,8 +291,10 @@ export const CreditRiskAnalysis = () => {
             <div style={{ marginTop: '2.5rem' }}>
               <ImageLightbox
                 src={creditRiskAwsCloud}
+                width={9600}
+                height={5000}
                 alt="AWS Cloud Infrastructure & DuckDB Out-of-Core Processing Blueprint"
-                caption="AWS Cloud Infrastructure Blueprint & Out-of-Core DuckDB Memory Architecture"
+                caption="AWS Cloud Infrastructure Blueprint & Out-of-Core DuckDB Memory Architecture (9.6K HD)"
               />
             </div>
           </ProjectSectionContent>

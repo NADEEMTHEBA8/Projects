@@ -1,7 +1,7 @@
 import supplyChainTexture from '~/assets/supply-chain-cover.gif';
-import supplyChainS3Folders from '~/assets/supply-chain-s3-folders.png';
-import supplyChainHivePartitions from '~/assets/supply-chain-hive-partitions.png';
-import supplyChainSnappyParquet from '~/assets/supply-chain-snappy-parquet.png';
+import supplyChainDatabricksAutoloader from '~/assets/supply-chain-databricks-autoloader.png';
+import supplyChainDatabricksLeaderboard from '~/assets/supply-chain-databricks-leaderboard.png';
+import supplyChainDatabricksDashboard from '~/assets/supply-chain-databricks-dashboard.png';
 import { Button } from '~/components/button';
 import { Footer } from '~/components/footer';
 import { Heading } from '~/components/heading';
@@ -264,47 +264,53 @@ export const SupplyChainTelemetry = () => {
           </ProjectSectionContent>
         </ProjectSection>
 
-        {/* AWS Cloud Infrastructure & Full-Screen Lightbox */}
+        {/* AWS & Databricks Cloud Infrastructure & Full-Screen Lightbox */}
         <ProjectSection>
           <ProjectSectionContent>
             <ProjectTextRow>
-              <ProjectSectionHeading>AWS Cloud Infrastructure &amp; Lightbox Proof</ProjectSectionHeading>
+              <ProjectSectionHeading>Databricks &amp; AWS Cloud Infrastructure Lightbox Proof</ProjectSectionHeading>
               <ProjectSectionText>
-                Click any screenshot below to inspect S3 Medallion directory trees, physical Hive partition subfolders, and Snappy Parquet telemetry objects in 4K full screen:
+                Click any screenshot below to inspect Databricks Auto Loader JSON streaming, Gold risk leaderboard aggregations, and Databricks SQL analytics dashboards in 4K full screen:
               </ProjectSectionText>
             </ProjectTextRow>
 
             <div style={{ display: 'grid', gap: '3rem', marginTop: '2.5rem' }}>
               <div>
                 <Heading level={4} as="h4" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>
-                  1. AWS S3 Medallion Lakehouse Directory Structure
+                  1. Databricks Auto Loader Micro-Batch JSON Ingestion (4K HD)
                 </Heading>
                 <ImageLightbox
-                  src={supplyChainS3Folders}
-                  alt="AWS S3 Medallion Folder Structure"
-                  caption="AWS S3 Medallion Directory Layout (Bronze, Silver, Gold Lakehouse Layers)"
+                  src={supplyChainDatabricksAutoloader}
+                  width={3420}
+                  height={2214}
+                  alt="Databricks Auto Loader Micro-Batch Ingestion Console"
+                  caption="Databricks Auto Loader (cloudFiles) Micro-Batch Telemetry Ingestion Console"
                 />
               </div>
 
               <div>
                 <Heading level={4} as="h4" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>
-                  2. AWS S3 Physical Hive Partitions (plant_id / event_date)
+                  2. Databricks Gold Layer Machine Risk Leaderboard Aggregations (4K HD)
                 </Heading>
                 <ImageLightbox
-                  src={supplyChainHivePartitions}
-                  alt="AWS S3 Hive Style Partition Directories"
-                  caption="AWS S3 Physical Hive Partition Folders for Restricting Query File Scans"
+                  src={supplyChainDatabricksLeaderboard}
+                  width={3420}
+                  height={2214}
+                  alt="Databricks Gold Layer Machine Risk Leaderboard"
+                  caption="Databricks Gold Layer Windowed Telemetry Aggregations & Machine Failure Leaderboard"
                 />
               </div>
 
               <div>
                 <Heading level={4} as="h4" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>
-                  3. AWS S3 Snappy Parquet Telemetry Payload Objects
+                  3. Databricks SQL Analytics &amp; IoT Telemetry Dashboard (4K HD)
                 </Heading>
                 <ImageLightbox
-                  src={supplyChainSnappyParquet}
-                  alt="AWS S3 Snappy Compressed Parquet Objects"
-                  caption="AWS S3 Snappy Parquet Compressed Data Objects for Fast Vectorized Scans"
+                  src={supplyChainDatabricksDashboard}
+                  width={3420}
+                  height={2214}
+                  alt="Databricks SQL Analytics Telemetry Dashboard"
+                  caption="Databricks SQL Analytics Console displaying real-time IoT factory telemetry metrics"
                 />
               </div>
             </div>

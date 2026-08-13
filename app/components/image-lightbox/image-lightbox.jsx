@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { ProjectImage } from '~/layouts/project';
 import styles from './image-lightbox.module.css';
 
-export function ImageLightbox({ src, alt, caption, width = 1280, height = 720 }) {
+export function ImageLightbox({ src, alt, caption, width = 2700, height = 1746 }) {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export function ImageLightbox({ src, alt, caption, width = 1280, height = 720 })
       <div className={styles.trigger} onClick={() => setIsOpen(true)} title="Click to view full screen">
         <ProjectImage
           raised
-          srcSet={`${src} 1280w`}
+          srcSet={`${src} 2700w`}
           width={width}
           height={height}
           placeholder={src}
@@ -34,7 +34,7 @@ export function ImageLightbox({ src, alt, caption, width = 1280, height = 720 })
           sizes="100vw"
         />
         <div className={styles.hintOverlay}>
-          <span className={styles.hintText}>🔍 Click for 4K Full Screen</span>
+          <span className={styles.hintText}>🔍 Click for 4K Ultra-HD Full Screen</span>
         </div>
       </div>
 
