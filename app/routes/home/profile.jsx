@@ -75,8 +75,8 @@ export const Profile = ({ id, visible, sectionRef }) => {
                 <Image
                   src={profileImg}
                   srcSet={`${profileImg} 480w, ${profileImgLarge} 960w`}
-                  width={960}
-                  height={1280}
+                  width={576}
+                  height={1024}
                   sizes={`(max-width: ${media.mobile}px) 100vw, 480px`}
                   alt="Nadeem Theba — Data Engineer"
                 />
