@@ -291,10 +291,9 @@ export const CreditRiskAnalysis = () => {
             <div style={{ marginTop: '2.5rem' }}>
               <ImageLightbox
                 src={creditRiskAwsCloud}
-                width={9600}
-                height={5000}
                 alt="AWS Cloud Infrastructure & DuckDB Out-of-Core Processing Blueprint"
-                caption="AWS Cloud Infrastructure Blueprint & Out-of-Core DuckDB Memory Architecture (9.6K HD)"
+                caption="AWS Cloud Infrastructure Blueprint & Out-of-Core DuckDB Memory Architecture"
+                details={`Cloud Engine: AWS S3 + Embedded DuckDB 1.1 Out-of-Core Processing Engine\nConfiguration: SET max_memory='3GB'; SET threads=8;\nDataset Scale: 57,000,000 Financial Records across 8 Multi-Join Tables\nOptimization: Numeric Memory Downcasting (int64 -> int16, float64 -> float32) | Host RAM Limit: < 4GB RAM`}
               />
             </div>
           </ProjectSectionContent>

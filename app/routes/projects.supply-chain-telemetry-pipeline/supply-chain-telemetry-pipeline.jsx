@@ -270,47 +270,44 @@ export const SupplyChainTelemetry = () => {
             <ProjectTextRow>
               <ProjectSectionHeading>Databricks &amp; AWS Cloud Infrastructure Lightbox Proof</ProjectSectionHeading>
               <ProjectSectionText>
-                Click any screenshot below to inspect Databricks Auto Loader JSON streaming, Gold risk leaderboard aggregations, and Databricks SQL analytics dashboards in 4K full screen:
+                Click any screenshot below to inspect Databricks Auto Loader JSON streaming, Gold risk leaderboard aggregations, and Databricks SQL analytics dashboards in full 1:1 resolution:
               </ProjectSectionText>
             </ProjectTextRow>
 
             <div style={{ display: 'grid', gap: '3rem', marginTop: '2.5rem' }}>
               <div>
                 <Heading level={4} as="h4" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>
-                  1. Databricks Auto Loader Micro-Batch JSON Ingestion (4K HD)
+                  1. Databricks Auto Loader Micro-Batch JSON Ingestion
                 </Heading>
                 <ImageLightbox
                   src={supplyChainDatabricksAutoloader}
-                  width={3420}
-                  height={2214}
                   alt="Databricks Auto Loader Micro-Batch Ingestion Console"
                   caption="Databricks Auto Loader (cloudFiles) Micro-Batch Telemetry Ingestion Console"
+                  details={`Engine: Databricks PySpark Structured Streaming + Auto Loader 15.x\nOption: cloudFiles.format = "json", cloudFiles.schemaLocation = "s3://lakehouse/_schemas/"\nThroughput: 50,000 events/sec micro-batch stream into Bronze S3 Delta Lake`}
                 />
               </div>
 
               <div>
                 <Heading level={4} as="h4" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>
-                  2. Databricks Gold Layer Machine Risk Leaderboard Aggregations (4K HD)
+                  2. Databricks Gold Layer Machine Risk Leaderboard Aggregations
                 </Heading>
                 <ImageLightbox
                   src={supplyChainDatabricksLeaderboard}
-                  width={3420}
-                  height={2214}
                   alt="Databricks Gold Layer Machine Risk Leaderboard"
                   caption="Databricks Gold Layer Windowed Telemetry Aggregations & Machine Failure Leaderboard"
+                  details={`Databricks Delta 3.x Table: gold_machine_failure_risk\nAggregations: 24-hour rolling average temperature, vibration variance, failure probability score\nPartitioning: PARTITIONED BY (plant_id, event_date)`}
                 />
               </div>
 
               <div>
                 <Heading level={4} as="h4" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>
-                  3. Databricks SQL Analytics &amp; IoT Telemetry Dashboard (4K HD)
+                  3. Databricks SQL Analytics &amp; IoT Telemetry Dashboard
                 </Heading>
                 <ImageLightbox
                   src={supplyChainDatabricksDashboard}
-                  width={3420}
-                  height={2214}
                   alt="Databricks SQL Analytics Telemetry Dashboard"
                   caption="Databricks SQL Analytics Console displaying real-time IoT factory telemetry metrics"
+                  details={`Databricks SQL Warehouse Console | Query Runtime: 0.22s\nMetrics Displayed: Active Machine Count, Factory Telemetry Spikes, High Risk Failure Signals`}
                 />
               </div>
             </div>

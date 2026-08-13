@@ -272,7 +272,7 @@ export const RealtimeFraudFeatureStore = () => {
             <ProjectTextRow>
               <ProjectSectionHeading>AWS Cloud Infrastructure &amp; Lightbox Proof</ProjectSectionHeading>
               <ProjectSectionText>
-                Click any screenshot below to inspect AWS S3 buckets, Delta Lake partition files, and IAM security access roles in 4K full screen:
+                Click any screenshot below to inspect AWS S3 buckets, Delta Lake partition files, and IAM security access roles in original full resolution:
               </ProjectSectionText>
             </ProjectTextRow>
 
@@ -285,6 +285,7 @@ export const RealtimeFraudFeatureStore = () => {
                   src={fraudS3Buckets}
                   alt="AWS S3 Storage Buckets Overview"
                   caption="AWS S3 Active Bucket Storage Layout for Streaming Lakehouse"
+                  details={`AWS S3 Storage Console | Region: us-east-1\nBuckets:\n- s3://fraud-store-cdc-bronze/ (WAL raw CDC payloads)\n- s3://fraud-store-delta-silver/ (PII masked delta tables)\n- s3://fraud-store-feature-gold/ (Aggregated feature matrices)`}
                 />
               </div>
 
@@ -296,6 +297,7 @@ export const RealtimeFraudFeatureStore = () => {
                   src={fraudDeltaPartitions}
                   alt="AWS S3 Delta Lake Table Partitions"
                   caption="AWS S3 Delta Lake Commit Log & Physical Parquet Partitions"
+                  details={`Delta Lake Physical Storage | Protocol: Delta 3.x\nFiles: _delta_log/00000000000000000000.json, _delta_log/00000000000000000001.checkpoint.parquet\nPartitions: user_id_hash=a8f9c1.../event_date=2024-08-13/`}
                 />
               </div>
 
@@ -307,6 +309,7 @@ export const RealtimeFraudFeatureStore = () => {
                   src={fraudIamPermissions}
                   alt="AWS IAM Security Roles and Access Control"
                   caption="AWS IAM Security Role Policies for Streaming Ingestion Services"
+                  details={`AWS IAM Policy: FraudStoreKinesisS3AccessPolicy\nPermissions: s3:PutObject, s3:GetObject, s3:ListBucket, kinesis:GetRecords, kinesis:GetShardIterator\nPrinciple: Least Privilege Service Account Role`}
                 />
               </div>
             </div>

@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-import { ProjectImage } from '~/layouts/project';
 import styles from './image-lightbox.module.css';
 
-export function ImageLightbox({ src, alt, caption, width = 2700, height = 1746 }) {
+export function ImageLightbox({ src, alt, caption, details }) {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -22,21 +21,28 @@ export function ImageLightbox({ src, alt, caption, width = 2700, height = 1746 }
   }, [isOpen]);
 
   return (
-    <>
-      <div className={styles.trigger} onClick={() => setIsOpen(true)} title="Click to view full screen">
-        <ProjectImage
-          raised
-          srcSet={`${src} 2700w`}
-          width={width}
-          height={height}
-          placeholder={src}
+    <div className={styles.wrapper}>
+      <div className={styles.trigger} onClick={() => setIsOpen(true)} title="Click to open full resolution preview">
+        <img
+          src={src}
           alt={alt}
-          sizes="100vw"
+          className={styles.triggerImage}
+          loading="lazy"
+          decoding="async"
         />
         <div className={styles.hintOverlay}>
-          <span className={styles.hintText}>🔍 Click for 4K Ultra-HD Full Screen</span>
+          <span className={styles.hintText}>🔍 Click for Original Full-Resolution View</span>
         </div>
       </div>
+
+      {details && (
+        <div className={styles.detailsBox}>
+          <div className={styles.detailsHeader}>Console Data &amp; Path Callout</div>
+          <pre className={styles.detailsCode}>
+            <code>{details}</code>
+          </pre>
+        </div>
+      )}
 
       {isOpen && (
         <div className={styles.lightboxModal} onClick={() => setIsOpen(false)}>
@@ -53,6 +59,6 @@ export function ImageLightbox({ src, alt, caption, width = 2700, height = 1746 }
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
