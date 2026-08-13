@@ -1,0 +1,105 @@
+.container {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--backgroundLight);
+  overflow: hidden;
+  margin-top: var(--spaceL);
+  margin-bottom: var(--spaceXL);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(15, 23, 42, 0.6);
+  border-bottom: 1px solid var(--border);
+  padding: 0 var(--spaceL);
+  gap: var(--spaceM);
+  flex-wrap: wrap;
+}
+
+.tabList {
+  display: flex;
+  gap: 4px;
+}
+
+.tabButton {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--textBody);
+  font-size: var(--fontSizeBodyS);
+  font-weight: var(--fontWeightMedium);
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: color 200ms ease, border-color 200ms ease;
+
+  &:hover {
+    color: var(--textTitle);
+  }
+
+  &.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    font-weight: var(--fontWeightBold);
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spaceM);
+}
+
+.githubLink {
+  font-size: var(--fontSizeBodyXS);
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: var(--fontWeightMedium);
+  transition: opacity 200ms ease;
+
+  &:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+}
+
+.copyButton {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
+  color: var(--textTitle);
+  font-size: var(--fontSizeBodyXS);
+  font-weight: var(--fontWeightMedium);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 200ms ease, border-color 200ms ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--accent);
+  }
+}
+
+.content {
+  padding: var(--spaceL);
+}
+
+.description {
+  font-size: var(--fontSizeBodyS);
+  color: var(--textBody);
+  margin-bottom: var(--spaceM);
+}
+
+.pre {
+  background: #090d16;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-size: 13px;
+  font-family: monospace;
+  color: var(--textBody);
+  margin: 0;
+  line-height: 1.5;
+}
