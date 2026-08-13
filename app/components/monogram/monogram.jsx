@@ -1,32 +1,23 @@
-import { forwardRef, useId } from 'react';
+import { forwardRef } from 'react';
 import { classes } from '~/utils/style';
 import styles from './monogram.module.css';
 
 export const Monogram = forwardRef(({ highlight, className, ...props }, ref) => {
-  const id = useId();
-  const clipId = `${id}monogram-clip`;
-
   return (
     <svg
-      aria-hidden
+      aria-label="Nadeem Theba — Monogram Logo"
       className={classes(styles.monogram, className)}
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
+      width="34"
+      height="34"
+      viewBox="0 0 34 34"
       ref={ref}
       {...props}
     >
-      <defs>
-        <clipPath id={clipId}>
-          <path d="M2 0h7.5l13 20.5V0H29v32h-7.5L8.5 11.5V32H2Z" />
-        </clipPath>
-      </defs>
-      <rect clipPath={`url(#${clipId})`} width="100%" height="100%" />
-      {highlight && (
-        <g clipPath={`url(#${clipId})`}>
-          <rect className={styles.highlight} width="100%" height="100%" />
-        </g>
-      )}
+      <rect className={styles.bgRect} width="34" height="34" rx="8" />
+      <path
+        className={styles.nPath}
+        d="M6 5h6.5l10.5 15V5H28v24h-6.5L11 14v15H6Z"
+      />
     </svg>
   );
 });

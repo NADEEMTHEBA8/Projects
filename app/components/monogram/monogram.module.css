@@ -1,31 +1,31 @@
 @layer components {
   .monogram {
-    fill: var(--textTitle);
-    transition: fill var(--durationL) ease;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: transform 0.25s ease, filter 0.25s ease;
+
+    &:hover {
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.5));
+    }
   }
 
-  .highlight {
+  .bgRect {
+    fill: var(--textTitle);
+    transition: fill 0.25s ease;
+  }
+
+  .nPath {
+    fill: var(--background);
+    transition: fill 0.25s ease;
+  }
+
+  :is(a:hover, .monogram:hover) .bgRect {
     fill: var(--accent);
-    opacity: 0;
-    transform: scale3d(1, 0, 1);
-    transform-origin: top;
-    transition: opacity 0.1s ease var(--durationM);
+  }
 
-    @media (--mediaUseMotion) {
-      transition: transform var(--durationM) var(--bezierFastoutSlowin),
-        opacity 0.1s ease var(--durationM);
-    }
-
-    :is(a:hover, .monogram:hover) & {
-      opacity: 1;
-      transform: scale3d(1, 1, 1);
-      transform-origin: bottom;
-      transition: opacity 0.1s ease;
-
-      @media (--mediaUseMotion) {
-        transition: transform var(--durationM) var(--bezierFastoutSlowin),
-          opacity 0.1s ease;
-      }
-    }
+  :is(a:hover, .monogram:hover) .nPath {
+    fill: #060911;
   }
 }
