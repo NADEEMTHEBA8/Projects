@@ -112,6 +112,11 @@ export default function App() {
         <link rel="icon" href="/favicon-v5.svg" type="image/svg+xml" />
         <link rel="shortcut icon" href="/shortcut-v5.png" type="image/png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon-v5.png" />
+        <meta property="og:image" content="https://projects-umber-eight-21.vercel.app/social-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://projects-umber-eight-21.vercel.app/social-image.png" />
         {/* Theme color doesn't support oklch so I'm hard coding these hexes for now */}
         <meta name="theme-color" content={theme === 'dark' ? '#111' : '#F2F2F2'} />
         <meta
