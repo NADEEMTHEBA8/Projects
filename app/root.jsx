@@ -42,10 +42,10 @@ export const links = () => [
   { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
   { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap' },
   { rel: 'manifest', href: '/manifest.json' },
-  { rel: 'icon', href: '/favicon.ico' },
-  { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
-  { rel: 'shortcut_icon', href: '/shortcut.png', type: 'image/png', sizes: '64x64' },
-  { rel: 'apple-touch-icon', href: '/icon-256.png', sizes: '256x256' },
+  { rel: 'icon', href: '/favicon.ico?v=3' },
+  { rel: 'icon', href: '/favicon.svg?v=3', type: 'image/svg+xml' },
+  { rel: 'shortcut_icon', href: '/shortcut.png?v=3', type: 'image/png', sizes: '64x64' },
+  { rel: 'apple-touch-icon', href: '/icon-256.png?v=3', sizes: '256x256' },
   { rel: 'author', href: '/humans.txt', type: 'text/plain' },
 ];
 
