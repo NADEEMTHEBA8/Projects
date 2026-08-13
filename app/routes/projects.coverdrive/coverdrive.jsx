@@ -11,6 +11,7 @@ import { ImageLightbox } from '~/components/image-lightbox/image-lightbox';
 import { CodeTabs } from '~/components/code-tabs/code-tabs';
 import { InteractiveArchitecture } from '~/components/interactive-architecture/interactive-architecture';
 import { Terminal } from '~/components/terminal/terminal';
+import { DisplacementSphere } from '~/routes/home/displacement-sphere';
 import {
   ProjectBackground,
   ProjectContainer,
@@ -140,12 +141,7 @@ export const Coverdrive = () => {
   return (
     <>
       <ProjectContainer>
-        <ProjectBackground
-          opacity={isDark ? 0.25 : 0.35}
-          src={coverdriveTexture}
-          srcSet={`${coverdriveTexture} 1280w`}
-          placeholder={coverdriveTexture}
-        />
+        <DisplacementSphere />
         <ProjectHeader
           title={title}
           description={description}

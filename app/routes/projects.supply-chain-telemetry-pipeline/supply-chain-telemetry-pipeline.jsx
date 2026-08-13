@@ -10,6 +10,7 @@ import { MetricsGrid } from '~/components/metrics-grid/metrics-grid';
 import { ImageLightbox } from '~/components/image-lightbox/image-lightbox';
 import { CodeTabs } from '~/components/code-tabs/code-tabs';
 import { InteractiveArchitecture } from '~/components/interactive-architecture/interactive-architecture';
+import { DisplacementSphere } from '~/routes/home/displacement-sphere';
 import {
   ProjectBackground,
   ProjectContainer,
@@ -115,12 +116,7 @@ export const SupplyChainTelemetry = () => {
   return (
     <>
       <ProjectContainer>
-        <ProjectBackground
-          opacity={isDark ? 0.25 : 0.35}
-          src={supplyChainTexture}
-          srcSet={`${supplyChainTexture} 1280w`}
-          placeholder={supplyChainTexture}
-        />
+        <DisplacementSphere />
         <ProjectHeader
           title={title}
           description={description}

@@ -8,6 +8,7 @@ import { MetricsGrid } from '~/components/metrics-grid/metrics-grid';
 import { ImageLightbox } from '~/components/image-lightbox/image-lightbox';
 import { CodeTabs } from '~/components/code-tabs/code-tabs';
 import { InteractiveArchitecture } from '~/components/interactive-architecture/interactive-architecture';
+import { DisplacementSphere } from '~/routes/home/displacement-sphere';
 import {
   ProjectBackground,
   ProjectContainer,
@@ -124,12 +125,7 @@ export const CreditRiskAnalysis = () => {
   return (
     <>
       <ProjectContainer>
-        <ProjectBackground
-          opacity={isDark ? 0.25 : 0.35}
-          src={creditRiskTexture}
-          srcSet={`${creditRiskTexture} 1280w`}
-          placeholder={creditRiskTexture}
-        />
+        <DisplacementSphere />
         <ProjectHeader
           title={title}
           description={description}
