@@ -173,10 +173,11 @@ export const Navbar = () => {
           ))}
           <button
             data-navbar-item
-            className={styles.bookCallButton}
+            className={styles.navLink}
             onClick={() => setIsBookModalOpen(true)}
+            style={{ background: 'none', border: 'none', cursor: 'pointer' }}
           >
-            📅 Book Call
+            Book Call
           </button>
         </div>
         <NavbarIcons desktop />
@@ -204,13 +205,15 @@ export const Navbar = () => {
               </RouterLink>
             ))}
             <button
-              className={styles.mobileBookCallButton}
+              className={styles.mobileNavLink}
+              data-visible={visible}
               onClick={() => {
                 setMenuOpen(false);
                 setIsBookModalOpen(true);
               }}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left' }}
             >
-              📅 Book Intro Call
+              Book Call
             </button>
             <NavbarIcons />
             <ThemeToggle isMobile />
