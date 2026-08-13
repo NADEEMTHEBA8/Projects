@@ -1,7 +1,10 @@
 import supplyChainTexture from '~/assets/supply-chain-cover.gif';
 import { Button } from '~/components/button';
 import { Footer } from '~/components/footer';
+import { Heading } from '~/components/heading';
 import { Image } from '~/components/image';
+import { Link } from '~/components/link';
+import { Text } from '~/components/text';
 import {
   ProjectBackground,
   ProjectContainer,
@@ -20,19 +23,20 @@ import styles from './supply-chain-telemetry-pipeline.module.css';
 
 const title = 'Predictive Supply Chain Telemetry Pipeline';
 const description =
-  'Event-driven telemetry ingestion engine processing IoT machine sensor streams (temperature, vibration, pressure) via AWS Kinesis, Databricks Auto Loader, Delta Lake 3.x Liquid Clustering, and dbt.';
+  'An event-driven telemetry pipeline ingesting IoT machine sensor streams alongside PostgreSQL ERP CDC. Processes payloads through a Medallion Lakehouse on AWS S3 and Databricks with composite physical Delta partitioning and Auto Loader schema tracking.';
 const roles = [
-  'Cloud Data Architecture',
-  'AWS Kinesis & Databricks Auto Loader',
-  'Delta Lake 3.x Liquid Clustering',
-  'dbt & Great Expectations Quality',
+  'IoT Telemetry & CDC Pipeline',
+  'AWS Kinesis Data Streams',
+  'Databricks Auto Loader 15.x',
+  'Delta Lake 3.x Composite Partitioning',
+  'dbt Core 1.8 & Databricks Asset Bundles',
 ];
 
 export const meta = () => {
   return baseMeta({ title, description, prefix: 'Projects' });
 };
 
-export const SupplyChainTelemetry = () => {
+export const SupplyChainTelemetryPipeline = () => {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
 
@@ -60,71 +64,121 @@ export const SupplyChainTelemetry = () => {
               width={1280}
               height={800}
               placeholder={supplyChainTexture}
-              alt="Predictive Supply Chain Telemetry Pipeline Architecture"
+              alt="Predictive Supply Chain Telemetry Architecture Overview"
               sizes="100vw"
             />
           </ProjectSectionContent>
         </ProjectSection>
 
+        {/* Technical Summary & Metrics Table */}
         <ProjectSection>
-          <ProjectTextRow>
-            <ProjectSectionHeading>Executive Summary & IoT Challenge</ProjectSectionHeading>
-            <ProjectSectionText>
-              Industrial IoT telemetry generates massive volumes of high-velocity machine sensor data (temperature spikes, vibration anomalies, pressure fluctuations). This pipeline ingests streaming machine telemetry via <strong>AWS Kinesis</strong>, ingests raw files incrementally into Databricks using <strong>Auto Loader</strong>, optimizes query access via <strong>Delta Lake 3.x Liquid Clustering</strong>, and transforms data with <strong>dbt</strong>.
-            </ProjectSectionText>
-          </ProjectTextRow>
+          <ProjectSectionContent>
+            <ProjectTextRow>
+              <ProjectSectionHeading>Technical Summary &amp; Operational Metrics</ProjectSectionHeading>
+              <ProjectSectionText>
+                Measured operational metrics across telemetry ingestion, Auto Loader schema enforcement, physical partition pruning, and business serving:
+              </ProjectSectionText>
+            </ProjectTextRow>
+
+            <div style={{ marginTop: '2rem', overflowX: 'auto' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+                <thead>
+                  <tr style={{ borderBottom: '2px solid var(--primary)', paddingBottom: '12px' }}>
+                    <th style={{ padding: '12px 16px', color: 'var(--textTitle)', fontSize: '14px', fontWeight: '700' }}>Component</th>
+                    <th style={{ padding: '12px 16px', color: 'var(--textTitle)', fontSize: '14px', fontWeight: '700' }}>Architecture Choice</th>
+                    <th style={{ padding: '12px 16px', color: 'var(--textTitle)', fontSize: '14px', fontWeight: '700' }}>Operational Metric</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style={{ borderBottom: '1px solid var(--border)' }}>
+                    <td style={{ padding: '12px 16px', fontWeight: '600', color: 'var(--accent)' }}>Ingestion Layer</td>
+                    <td style={{ padding: '12px 16px', color: 'var(--textBody)' }}>AWS Kinesis Data Streams + Threaded S3 Producer</td>
+                    <td style={{ padding: '12px 16px', color: 'var(--textBody)', fontWeight: '600' }}>Multi-threaded telemetry ingestion emitting batch events across factory units</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid var(--border)' }}>
+                    <td style={{ padding: '12px 16px', fontWeight: '600', color: 'var(--accent)' }}>Storage &amp; Lakehouse</td>
+                    <td style={{ padding: '12px 16px', color: 'var(--textBody)' }}>AWS S3 + Delta Lake 3.x</td>
+                    <td style={{ padding: '12px 16px', color: 'var(--textBody)' }}>Composite physical partitioning PARTITIONED BY (plant_id, event_date)</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid var(--border)' }}>
+                    <td style={{ padding: '12px 16px', fontWeight: '600', color: 'var(--accent)' }}>Transformation Engine</td>
+                    <td style={{ padding: '12px 16px', color: 'var(--textBody)' }}>Databricks PySpark Structured Streaming</td>
+                    <td style={{ padding: '12px 16px', color: 'var(--textBody)' }}>Continuous rolling machine risk metrics and dbt transformations</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid var(--border)' }}>
+                    <td style={{ padding: '12px 16px', fontWeight: '600', color: 'var(--accent)' }}>Data Quality &amp; Isolation</td>
+                    <td style={{ padding: '12px 16px', color: 'var(--textBody)' }}>Databricks Auto Loader Schema Tracking</td>
+                    <td style={{ padding: '12px 16px', color: 'var(--textBody)' }}>Malformed JSON payloads routed to quarantine storage without pipeline panics</td>
+                  </tr>
+                  <tr>
+                    <td style={{ padding: '12px 16px', fontWeight: '600', color: 'var(--accent)' }}>Test Suite</td>
+                    <td style={{ padding: '12px 16px', color: 'var(--textBody)' }}>PyTest Integration Suite</td>
+                    <td style={{ padding: '12px 16px', color: 'var(--textTitle)', fontWeight: '700' }}>5 / 5 Passing Tests (producer retries, profile generation, drift)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </ProjectSectionContent>
         </ProjectSection>
 
+        {/* System Architecture Section */}
         <ProjectSection light={isDark}>
           <ProjectSectionContent>
             <ProjectTextRow>
-              <ProjectSectionHeading>Cloud Telemetry Architecture</ProjectSectionHeading>
+              <ProjectSectionHeading>System Architecture</ProjectSectionHeading>
+              <ProjectSectionText>
+                Streaming Medallion architecture flowing from edge IoT sensors and ERP CDC through AWS Kinesis, Databricks Auto Loader, Delta Lake (Bronze/Silver/Gold), dbt Core 1.8, and ERP sync:
+              </ProjectSectionText>
             </ProjectTextRow>
 
-            <div className={styles.diagramContainer}>
+            <div className={styles.diagramContainer} style={{ marginTop: '2rem' }}>
               <svg className={styles.diagramSvg} viewBox="0 0 900 340" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="900" height="340" rx="12" fill="var(--backgroundLight)" stroke="var(--primary)" strokeOpacity="0.2" />
-
-                {/* IoT Machine Sensors */}
-                <rect x="30" y="60" width="160" height="220" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
-                <text x="45" y="100" fill="var(--textTitle)" fontSize="16" fontWeight="700">IoT Sensors</text>
-                <text x="45" y="130" fill="var(--textBody)" fontSize="12">• Temperature</text>
-                <text x="45" y="155" fill="var(--textBody)" fontSize="12">• Vibration Frequency</text>
-                <text x="45" y="180" fill="var(--textBody)" fontSize="12">• Pressure Gauges</text>
-                <text x="45" y="210" fill="var(--accent)" fontSize="12" fontWeight="600">AWS Kinesis Streams</text>
+                
+                {/* 1. Ingestion */}
+                <rect x="30" y="40" width="180" height="260" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
+                <text x="50" y="75" fill="var(--textTitle)" fontSize="15" fontWeight="700">1. INGESTION</text>
+                <text x="50" y="110" fill="var(--textBody)" fontSize="12">• IoT Edge Sensors</text>
+                <text x="50" y="130" fill="var(--textBody)" fontSize="12">  (Temp, Vibration, Press)</text>
+                <text x="50" y="165" fill="var(--textBody)" fontSize="12">• PostgreSQL ERP CDC</text>
+                <text x="50" y="185" fill="var(--textBody)" fontSize="12">  (Workorders)</text>
+                <text x="50" y="220" fill="var(--accent)" fontSize="12" fontWeight="600">AWS Kinesis Shards</text>
 
                 {/* Arrow 1 */}
-                <path d="M190 170 H240" stroke="var(--accent)" strokeWidth="3" markerEnd="url(#arrow)" />
+                <path d="M210 170 H240" stroke="var(--accent)" strokeWidth="3" markerEnd="url(#arrow)" />
 
-                {/* Databricks Auto Loader */}
-                <rect x="250" y="60" width="160" height="220" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
-                <text x="265" y="100" fill="var(--textTitle)" fontSize="16" fontWeight="700">Auto Loader</text>
-                <text x="265" y="130" fill="var(--textBody)" fontSize="12">• AWS S3 Staging</text>
-                <text x="265" y="155" fill="var(--textBody)" fontSize="12">• File Notification</text>
-                <text x="265" y="180" fill="var(--textBody)" fontSize="12">• Schema Evolution</text>
-                <text x="265" y="210" fill="var(--accent)" fontSize="12" fontWeight="600">Incremental Ingest</text>
+                {/* 2. Databricks Auto Loader */}
+                <rect x="250" y="40" width="190" height="260" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
+                <text x="270" y="75" fill="var(--textTitle)" fontSize="15" fontWeight="700">2. AUTO LOADER</text>
+                <text x="270" y="110" fill="var(--textBody)" fontSize="12">• Databricks Auto Loader</text>
+                <text x="270" y="130" fill="var(--textBody)" fontSize="12">  (cloudFiles JSON)</text>
+                <text x="270" y="165" fill="var(--textBody)" fontSize="12">• Schema Tracking</text>
+                <text x="270" y="185" fill="var(--textBody)" fontSize="12">  (Rescue Column)</text>
+                <text x="270" y="220" fill="var(--accent)" fontSize="12" fontWeight="600">Runtime Inference</text>
 
                 {/* Arrow 2 */}
-                <path d="M410 170 H460" stroke="var(--accent)" strokeWidth="3" markerEnd="url(#arrow)" />
+                <path d="M440 170 H470" stroke="var(--accent)" strokeWidth="3" markerEnd="url(#arrow)" />
 
-                {/* Delta Lake 3.x */}
-                <rect x="470" y="60" width="170" height="220" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
-                <text x="485" y="100" fill="var(--textTitle)" fontSize="16" fontWeight="700">Delta Lake 3.x</text>
-                <text x="485" y="130" fill="var(--textBody)" fontSize="12">• Liquid Clustering</text>
-                <text x="485" y="155" fill="var(--textBody)" fontSize="12">• Dynamic Z-Ordering</text>
-                <text x="485" y="180" fill="var(--textBody)" fontSize="12">• ACID Transactions</text>
-                <text x="485" y="210" fill="var(--accent)" fontSize="12" fontWeight="600">Medallion Lakehouse</text>
+                {/* 3. Storage */}
+                <rect x="480" y="40" width="180" height="260" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
+                <text x="500" y="75" fill="var(--textTitle)" fontSize="15" fontWeight="700">3. DELTA LAKE</text>
+                <text x="500" y="110" fill="var(--textBody)" fontSize="12">• Bronze: Raw Parquet</text>
+                <text x="500" y="135" fill="var(--textBody)" fontSize="12">• Silver: Structured</text>
+                <text x="500" y="160" fill="var(--textBody)" fontSize="12">• Gold: 24h Failure Risk</text>
+                <text x="500" y="205" fill="var(--textBody)" fontSize="12">• Composite Partition</text>
+                <text x="500" y="225" fill="var(--accent)" fontSize="12" fontWeight="600">(plant_id, date)</text>
 
                 {/* Arrow 3 */}
-                <path d="M640 170 H690" stroke="var(--accent)" strokeWidth="3" markerEnd="url(#arrow)" />
+                <path d="M660 170 H690" stroke="var(--accent)" strokeWidth="3" markerEnd="url(#arrow)" />
 
-                {/* dbt & Quality */}
-                <rect x="700" y="60" width="170" height="220" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
-                <text x="715" y="100" fill="var(--textTitle)" fontSize="16" fontWeight="700">dbt &amp; Analytics</text>
-                <text x="715" y="130" fill="var(--textBody)" fontSize="12">• Dimensional Models</text>
-                <text x="715" y="155" fill="var(--textBody)" fontSize="12">• Anomaly Detection</text>
-                <text x="715" y="180" fill="var(--textBody)" fontSize="12">• Great Expectations</text>
-                <text x="715" y="210" fill="var(--accent)" fontSize="12" fontWeight="600">Automated Testing</text>
+                {/* 4. Serving */}
+                <rect x="700" y="40" width="170" height="260" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
+                <text x="720" y="75" fill="var(--textTitle)" fontSize="15" fontWeight="700">4. SERVING</text>
+                <text x="720" y="110" fill="var(--textBody)" fontSize="12">• dbt Core 1.8</text>
+                <text x="720" y="130" fill="var(--textBody)" fontSize="12">  (Transformations)</text>
+                <text x="720" y="165" fill="var(--textBody)" fontSize="12">• PostgreSQL ERP Sync</text>
+                <text x="720" y="205" fill="var(--textBody)" fontSize="12">• Risk Dashboard</text>
+                <text x="720" y="225" fill="var(--accent)" fontSize="12" fontWeight="600">Actionable Signals</text>
 
                 <defs>
                   <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
@@ -136,31 +190,122 @@ export const SupplyChainTelemetry = () => {
           </ProjectSectionContent>
         </ProjectSection>
 
+        {/* Code Highlights Section */}
+        <ProjectSection>
+          <ProjectSectionContent>
+            <ProjectTextRow>
+              <ProjectSectionHeading>Key Implementation Code Highlights</ProjectSectionHeading>
+            </ProjectTextRow>
+
+            <div style={{ display: 'grid', gap: '2.5rem', marginTop: '1.5rem' }}>
+              <div>
+                <Heading level={4} as="h4" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>
+                  1. Multi-Threaded Ingestion Runner (<code>src/ingestion/run.py</code>)
+                </Heading>
+                <Text size="s" style={{ marginBottom: '1rem' }}>
+                  The ingestion generator uses a <code>ThreadPoolExecutor</code> to issue batched events directly to Amazon Kinesis or AWS S3:
+                </Text>
+                <pre style={{ background: 'var(--backgroundLight)', border: '1px solid var(--border)', padding: '1.25rem', borderRadius: '8px', overflowX: 'auto', fontSize: '13px', fontFamily: 'monospace', color: 'var(--textBody)' }}>
+                  <code>{`from concurrent.futures import ThreadPoolExecutor
+from src.ingestion.generator import TelemetryGenerator
+
+def submit_batch(batch_index: int):
+    batch = [generator.generate_machine_event() for _ in range(batch_size)]
+    producer.send_batch(batch)
+    return len(batch)
+
+with ThreadPoolExecutor(max_workers=16) as executor:
+    futures = [executor.submit(submit_batch, i) for i in range(num_batches)]
+    for f in futures:
+        f.result()`}</code>
+                </pre>
+              </div>
+
+              <div>
+                <Heading level={4} as="h4" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>
+                  2. Physical Delta Partition Pruning
+                </Heading>
+                <Text size="s" style={{ marginBottom: '1rem' }}>
+                  Delta tables enforce composite physical partitioning by <code>(plant_id, event_date)</code> to restrict file scans when evaluating regional plant operational windows:
+                </Text>
+                <pre style={{ background: 'var(--backgroundLight)', border: '1px solid var(--border)', padding: '1.25rem', borderRadius: '8px', overflowX: 'auto', fontSize: '13px', fontFamily: 'monospace', color: 'var(--textBody)' }}>
+                  <code>{`spark.readStream.format("cloudFiles") \\
+    .option("cloudFiles.format", "json") \\
+    .schema(TELEMETRY_SCHEMA) \\
+    .load("s3://lakehouse/raw_telemetry/") \\
+    .writeStream.format("delta") \\
+    .partitionBy("plant_id", "event_date") \\
+    .start("s3://lakehouse/silver_telemetry/")`}</code>
+                </pre>
+              </div>
+            </div>
+          </ProjectSectionContent>
+        </ProjectSection>
+
+        {/* PyTest Verification & Test Suite */}
+        <ProjectSection light={isDark}>
+          <ProjectSectionContent>
+            <ProjectTextRow>
+              <ProjectSectionHeading>PyTest Verification Output</ProjectSectionHeading>
+              <ProjectSectionText>
+                Execution log confirming all ingestion producers, schema drift handling, and profile generator components function cleanly:
+              </ProjectSectionText>
+            </ProjectTextRow>
+
+            <pre style={{ background: '#090D16', border: '1px solid #1E293B', padding: '1.5rem', borderRadius: '10px', overflowX: 'auto', fontSize: '12px', fontFamily: 'monospace', color: '#38BDF8', marginTop: '1.5rem', lineHeight: '1.5' }}>
+              <code>{`============================= test session starts ==============================
+platform darwin -- Python 3.11.15, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/nadeemtheba/projects/supply-chain-telemetry-pipeline
+configfile: pyproject.toml
+plugins: cov-7.1.0, Faker-40.36.0
+collected 5 items
+
+tests/unit/test_telemetry_pipeline.py::test_profile_factory_reproducibility PASSED    [ 20%]
+tests/unit/test_telemetry_pipeline.py::test_telemetry_event_generation PASSED          [ 40%]
+tests/unit/test_telemetry_pipeline.py::test_telemetry_schema_drift_extra_fields PASSED [ 60%]
+tests/unit/test_telemetry_pipeline.py::test_kinesis_producer_partial_batch_retry_success PASSED [ 80%]
+tests/unit/test_telemetry_pipeline.py::test_s3_producer_send_success PASSED             [100%]
+
+============================== 5 passed in 0.38s ===============================`}</code>
+            </pre>
+          </ProjectSectionContent>
+        </ProjectSection>
+
+        {/* Quickstart & Trade-offs */}
         <ProjectSection>
           <ProjectSectionColumns>
             <ProjectSectionContent>
               <ProjectTextRow>
-                <ProjectSectionHeading>Engineering Achievements</ProjectSectionHeading>
-                <ProjectSectionText>
-                  <strong>1. Liquid Clustering Performance:</strong> By replacing static Hive-style partitioning with Delta Lake 3.x Liquid Clustering on `(device_id, event_timestamp)`, query scan file counts were reduced by 82%, accelerating operational dashboards.
-                </ProjectSectionText>
-                <ProjectSectionText>
-                  <strong>2. Automated Quality Control:</strong> Integrated dbt test suites and Great Expectations data quality assertions to flag temperature and vibration sensor drift before sending alerts to maintenance engineers.
-                </ProjectSectionText>
+                <ProjectSectionHeading>Quickstart Guide</ProjectSectionHeading>
+                <pre style={{ background: 'var(--backgroundLight)', border: '1px solid var(--border)', padding: '1rem', borderRadius: '8px', overflowX: 'auto', fontSize: '12px', fontFamily: 'monospace', color: 'var(--textBody)' }}>
+                  <code>{`# 1. Clone repository & virtualenv
+git clone https://github.com/NADEEMTHEBA8/supply-chain-telemetry-pipeline.git
+cd supply-chain-telemetry-pipeline
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+
+# 2. Run local telemetry generator
+python -m src.ingestion.run --events 100
+
+# 3. Execute PyTest suite
+./.venv/bin/pytest tests/
+
+# 4. Validate Databricks Asset Bundle (DAB)
+databricks bundle validate --target dev`}</code>
+                </pre>
               </ProjectTextRow>
             </ProjectSectionContent>
 
             <ProjectSectionContent>
               <ProjectTextRow>
-                <ProjectSectionHeading>Tech Stack Highlights</ProjectSectionHeading>
+                <ProjectSectionHeading>Engineering Trade-Offs</ProjectSectionHeading>
                 <ProjectSectionText>
-                  • <strong>Ingestion:</strong> AWS Kinesis Data Streams, Databricks Auto Loader<br />
-                  • <strong>Lakehouse:</strong> Delta Lake 3.x, Apache Spark<br />
-                  • <strong>Transformation:</strong> dbt (data build tool), SQLX<br />
-                  • <strong>Quality:</strong> Great Expectations, dbt tests<br />
-                  • <strong>Cloud Platform:</strong> AWS S3, Databricks Unity Catalog
+                  <strong>1. S3 Staging vs. Direct Stream Processing:</strong> Writing raw telemetry to S3 before downstream processing provides a cost-effective queue buffer that avoids keeping expensive Databricks clusters continuously active during low-volume hours.
                 </ProjectSectionText>
-                <div style={{ marginTop: '2rem' }}>
+                <ProjectSectionText>
+                  <strong>2. Composite Partitioning:</strong> Partitioning by <code>(plant_id, event_date)</code> aligns directly with query filtering patterns while avoiding over-partitioning into thousands of sub-megabyte files.
+                </ProjectSectionText>
+                <div style={{ marginTop: '1.5rem' }}>
                   <Button iconHoverShift href="https://github.com/NADEEMTHEBA8/supply-chain-telemetry-pipeline" target="_blank" rel="noopener noreferrer" iconEnd="arrow-right">
                     View GitHub Repository
                   </Button>
