@@ -1,4 +1,4 @@
-import supplyChainTexture from '~/assets/supply-chain-cover.png';
+import supplyChainTexture from '~/assets/supply-chain-cover.gif';
 import { Button } from '~/components/button';
 import { Footer } from '~/components/footer';
 import { Image } from '~/components/image';

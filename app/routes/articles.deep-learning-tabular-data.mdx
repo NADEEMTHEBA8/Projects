@@ -1,0 +1,44 @@
+---
+title: "You Don't Need Deep Learning for Tabular Data: Technical Deep Dive"
+abstract: Architectural walkthrough of feature engineering, TF-IDF vectorization, and why tree-based models outperform deep neural networks on structured tabular datasets.
+date: '2023-08-10'
+banner: /assets/credit-risk-cover.png
+---
+
+## Why Tree-Based Models Rule Tabular Data
+
+In applied machine learning, deep learning neural networks dominate vision and natural language processing tasks. However, when working with **structured tabular datasets** — such as credit default records, transaction logs, and customer telemetry — gradient boosted decision trees (GBDTs like XGBoost and LightGBM) consistently outperform complex neural network architectures.
+
+![Tabular ML Architecture](/assets/credit-risk-cover.png)
+
+## Core Technical Concepts
+
+### 1. Weighted Feature Combination & Vectorization
+Instead of feeding raw unstructured text columns into deep embeddings, weighted feature concatenation and **TF-IDF Vectorization** allow key domain fields (like genre, director, cast, or financial indicators) to be explicitly weighted:
+
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+def create_feature_matrix(df):
+    tfidf = TfidfVectorizer(
+        stop_words='english',
+        min_df=2,
+        max_features=5000
+    )
+    return tfidf.fit_transform(df['combined_features'])
+```
+
+### 2. Cosine Similarity & Out-of-Core Processing
+Calculating pair-wise similarity matrices across tabular entities enables fast similarity search and decision boundaries:
+
+```python
+from sklearn.metrics.pairwise import cosine_similarity
+
+similarity_matrix = cosine_similarity(tfidf_matrix)
+```
+
+## Key Takeaways
+
+- **Interpretability & Speed**: Tree models train in a fraction of the time required for deep neural networks while providing clear feature importance metrics.
+- **Robustness to Missing Values**: GBDTs handle null values and sparse matrices natively without requiring complex imputation steps.
+- **Asymmetric Loss Optimization**: GBDTs allow custom objective functions and asymmetric thresholding ($\beta=2.5$) to prioritize high-cost false negative minimization in financial risk applications.

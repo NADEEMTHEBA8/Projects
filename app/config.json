@@ -1,7 +1,12 @@
 {
   "name": "Nadeem Theba",
   "role": "Data Engineer",
-  "disciplines": ["BI Analyst", "ML Engineer", "Data Architect", "Cloud Developer"],
+  "disciplines": [
+    "Cloud Data Engineer",
+    "Analytics Engineer",
+    "MLOps Engineer",
+    "Data Platform Engineer"
+  ],
   "url": "https://github.com/NADEEMTHEBA8",
   "email": "nadeemtheba8@gmail.com",
   "phone": "+919714965149",

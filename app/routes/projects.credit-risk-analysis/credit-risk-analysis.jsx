@@ -1,4 +1,4 @@
-import creditRiskTexture from '~/assets/credit-risk-cover.png';
+import creditRiskTexture from '~/assets/credit-risk-cover.gif';
 import { Button } from '~/components/button';
 import { Footer } from '~/components/footer';
 import { Image } from '~/components/image';

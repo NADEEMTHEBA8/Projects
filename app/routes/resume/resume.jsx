@@ -156,11 +156,10 @@ export const Resume = () => {
             <ProjectTextRow width="l">
               <ProjectSectionHeading>Professional Summary</ProjectSectionHeading>
               <ProjectSectionText>
-                Data Engineer with 3+ years of experience architecting scalable ETL/ELT pipelines,
-                event-driven streaming architectures, and Medallion Lakehouses on AWS &amp; Databricks.
-                Highly proficient in Databricks, PySpark, SQL, Delta Lake, dbt, AWS (Lambda, CloudWatch,
-                S3, Kinesis), and Terraform. Experienced in ingesting high-frequency IoT sensor telemetry,
-                constructing real-time customer routing logic, and optimising physical lakehouse storage layouts.
+                Data Engineer with hands-on experience designing and optimizing production ETL/ELT pipelines,
+                lakehouses, and cloud data platforms. Proficient in Python, Advanced SQL, PySpark, dbt, Airflow,
+                and AWS/GCP infrastructures. Specialized in real-time CDC streaming, vectorized query execution,
+                and schema enforcement.
               </ProjectSectionText>
             </ProjectTextRow>
           </ProjectSectionContent>
@@ -175,17 +174,17 @@ export const Resume = () => {
                 <div className={styles.accentBar} />
                 <div className={styles.cardHeader}>
                   <div>
-                    <Text size="l" weight="bold" className={styles.cardRole}>Data Engineer</Text>
-                    <Text size="m" className={styles.cardCompany}>Kaival Technologies — Remote (London / India)</Text>
+                    <Text size="l" weight="bold" className={styles.cardRole}>Data Engineer (Contract)</Text>
+                    <Text size="m" className={styles.cardCompany}>Kaival Technologies | Remote</Text>
                   </div>
-                  <span className={styles.cardDuration}>Oct 2023 – Present</span>
+                  <span className={styles.cardDuration}>10/2023 – Present</span>
                 </div>
                 <ul className={styles.bulletList}>
                   {[
-                    'Engineered scalable ETL pipelines utilising Python and SQL to process over 500GB of daily data, reducing complex batch runtimes from 12 hrs to 7.2 hrs and cutting compute costs by 25%.',
-                    'Implemented strict data quality rules using programmatic validation, preventing 99.9% of anomalies from reaching production dashboards.',
-                    'Architected scalable data integration workflows using Python, consolidating 250k+ legacy records from disparate enterprise source systems into a centralised schema.',
-                    'Achieved zero-downtime production releases by architecting automated CI/CD pipelines via GitHub Actions & Docker.',
+                    'Optimized high-volume enterprise batch pipelines (~500GB) using DuckDB out-of-core vectorized processing, reducing peak RAM from 32GB+ to <4GB and cutting cloud compute costs by 25%.',
+                    'Engineered data validation gates using dbt tests and Pandera schema contracts, routing malformed records to Dead Letter Queues (DLQ) and maintaining 99.9% data freshness SLA.',
+                    'Automated legacy data ingestion by engineering modular Python ETL pipelines, migrating 250k+ relational records weekly into cloud storage and eliminating 12 hours of manual operational overhead.',
+                    'Executed cross-cloud migration of enterprise datasets to GCP BigQuery and AWS S3, refactoring batch pipelines and optimizing complex SQL joins across 50M+ rows to reduce query execution latency by 65%.',
                   ].map((point, i) => (
                     <li key={i} className={styles.bulletItem}>
                       <span className={styles.bulletDot} />

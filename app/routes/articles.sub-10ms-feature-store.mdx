@@ -1,46 +1,54 @@
 ---
-title: 'Sub-10ms Feature Vector Serving with PySpark, Kafka, and Redis'
-abstract: Building an event-driven financial fraud feature store that captures database mutations via Debezium CDC and serves real-time vector lookups to FastAPI scoring endpoints.
-date: '2024-05-20'
+title: 'Building a Sub-10ms Streaming Feature Store with Kafka & Redis'
+abstract: How to capture PostgreSQL database changes using Debezium and Kafka, process windowed aggregations in PySpark, and cache feature vectors in Redis for fast ML scoring.
+date: '2023-12-20'
 banner: /assets/fraud-cover.png
 ---
 
-## Decoupling Transaction Storage from Real-Time Model Inference
+## The Low-Latency ML Feature Dilemma
 
-High-throughput financial fraud detection requires serving complex aggregated features (e.g. 1-hour transaction counts, 24-hour average spend, geographical velocity) to model scoring endpoints with sub-10ms latencies.
+In real-time fraud detection and decisioning systems, machine learning models need feature inputs (e.g. `count_transactions_1h`, `total_amount_24h`, `velocity_ratio`) calculated over historical windows in under 10 milliseconds. Querying transactional databases like PostgreSQL directly under high concurrency causes extreme query locks and high latencies.
 
-Directly querying relational databases during online transaction evaluation creates severe locks and bottleneck latencies. In this architecture, we decoupled event storage from feature serving using **Debezium Change Data Capture (CDC)**, **Apache Kafka (KRaft mode)**, **PySpark Structured Streaming**, and **Redis 7.0**.
+To solve this, we built an event-driven **Streaming Feature Store** architecture combining **Debezium CDC**, **Apache Kafka**, **PySpark Structured Streaming**, and **Redis**.
 
-![Realtime Fraud Feature Store](/assets/fraud-cover.png)
+![Feature Store Architecture](/assets/fraud-cover.png)
 
-## Non-Transactional Pipelined Redis Writes
+## Streaming CDC Pipeline Architecture
 
-To achieve high-performance Redis updates across Spark stream partitions, we utilize non-transactional pipelined batch writes to eliminate individual network round-trips:
+1. **Change Data Capture (CDC)**: Debezium captures row updates on PostgreSQL operational tables and publishes change events into Kafka topics.
+2. **PySpark Structured Streaming**: PySpark streams consume Kafka topics, apply 1-hour and 24-hour sliding window aggregations, and compute updated customer feature vectors.
+3. **Low-Latency Redis Serving**: PySpark writes aggregated feature vectors into Redis key-value stores.
+4. **FastAPI Serving Endpoint**: The FastAPI decisioning microservice retrieves feature vectors from Redis in **sub-10ms** latency to score incoming transactions.
 
 ```python
-import redis
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import from_json, col, window, count, sum as _sum
 
-def write_features_to_redis(partition_iterator, redis_host: str, redis_port: int):
-    r = redis.Redis(host=redis_host, port=redis_port, socket_connect_timeout=1)
-    pipe = r.pipeline(transaction=False)
-    
-    for record in partition_iterator:
-        user_key = f"user:features:{record['user_id']}"
-        pipe.hset(
-            user_key,
-            mapping={
-                "tx_count_1h": record["tx_count_1h"],
-                "avg_amount_24h": record["avg_amount_24h"],
-                "last_updated": record["event_timestamp"],
-            }
-        )
-        pipe.expire(user_key, 86400) # 24h TTL to optimize memory footprint
-        
-    pipe.execute()
+spark = SparkSession.builder \
+    .appName("RealTimeFraudFeatureStore") \
+    .getOrCreate()
+
+# Consume raw transaction stream from Kafka
+raw_stream = spark.readStream \
+    .format("kafka") \
+    .option("kafka.bootstrap.servers", "localhost:9092") \
+    .option("subscribe", "postgres.transactions") \
+    .load()
+
+# Calculate sliding window aggregations over 1-hour windows
+features_df = raw_stream \
+    .groupBy(
+        window(col("timestamp"), "1 hour", "5 minutes"),
+        col("account_id")
+    ) \
+    .agg(
+        count("transaction_id").alias("tx_count_1h"),
+        _sum("amount").alias("tx_sum_1h")
+    )
 ```
 
-## Key Metrics & Performance Achievements
+## Key Achievements
 
-- **Sub-10ms P99 Latency**: FastAPI scoring endpoints retrieve complete 24-hour feature vectors from Redis in under 8 milliseconds.
-- **Dead Letter Queue (DLQ) Resilience**: Malformed JSON payloads are routed automatically to `transactions.dead_letter` Kafka topics without interrupting active PySpark streams.
-- **Automated PII Masking**: Sensitive fields (`device_id`, `ip_address`) are deterministically hashed via SHA-256 before landing in MinIO Delta Lake 3.0 storage.
+- **Sub-10ms Feature Vector Serving**: Decoupled database read load from inference latency.
+- **Exact-Once Processing**: Utilized PySpark streaming checkpointing to guarantee zero duplicate calculations.
+- **DLQ Resiliency**: Configured automated Dead-Letter Queue (DLQ) routing to catch malformed event payloads without crashing streaming workers.

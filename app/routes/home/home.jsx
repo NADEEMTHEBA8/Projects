@@ -1,7 +1,7 @@
-import coverdriveTexture from '~/assets/coverdrive-cover.png';
-import fraudTexture from '~/assets/fraud-cover.png';
-import creditRiskTexture from '~/assets/credit-risk-cover.png';
-import supplyChainTexture from '~/assets/supply-chain-cover.png';
+import coverdriveTexture from '~/assets/coverdrive-cover.gif';
+import fraudTexture from '~/assets/fraud-cover.gif';
+import creditRiskTexture from '~/assets/credit-risk-cover.gif';
+import supplyChainTexture from '~/assets/supply-chain-cover.gif';
 import { Footer } from '~/components/footer';
 import { baseMeta } from '~/utils/meta';
 import { Intro } from './intro';
@@ -99,8 +99,8 @@ export const Home = () => {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title="Coverdrive — Shift-Left Lakehouse"
-        description="Analytical data lakehouse processing 1.26M+ delivery records across 5,591 T20 matches with Pandera quality gates in Airflow and PySpark key-salting skew reduction."
+        title="Coverdrive — Cricket Analytics Lakehouse"
+        description="A PySpark and DuckDB data lakehouse hosted on AWS S3 processing 1.26M+ ball-by-ball T20 cricket delivery records. Uses Apache Airflow for daily batch orchestration, Pandera schema gates to block bad data before storage, and PySpark key-salting to eliminate executor memory skew on large joins."
         buttonText="Explore case study"
         buttonLink="/projects/coverdrive"
         model={{
@@ -120,7 +120,7 @@ export const Home = () => {
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
         title="Real-Time Fraud Feature Store"
-        description="Event-driven streaming feature store capturing PostgreSQL CDC via Debezium and Kafka, computing PySpark aggregations, and serving Redis vectors via FastAPI in sub-10ms."
+        description="An event-driven streaming feature store deployed on AWS capturing PostgreSQL database changes via Debezium and Apache Kafka. Computes rolling window aggregations in PySpark Structured Streaming and caches feature vectors in Redis to serve a FastAPI fraud scoring API in under 10ms."
         buttonText="Explore case study"
         buttonLink="/projects/realtime-fraud-feature-store"
         model={{
@@ -139,8 +139,8 @@ export const Home = () => {
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={3}
-        title="Credit Risk Default Analytics Pipeline"
-        description="Out-of-core financial ML pipeline processing 57M records under 4GB RAM via embedded DuckDB, numeric downcasting, XGBoost asymmetric F-beta thresholding (beta=2.5), and safety floors."
+        title="Credit Risk Analytics Pipeline"
+        description="A memory-efficient financial ML data pipeline processing 57M loan records under 4GB RAM using embedded DuckDB and AWS S3 storage. Applies integer downcasting to optimize memory usage and pairs with an XGBoost decision model tuned specifically to detect high-cost credit defaults."
         buttonText="Explore case study"
         buttonLink="/projects/credit-risk-analysis"
         model={{
@@ -160,7 +160,7 @@ export const Home = () => {
         visible={visibleSections.includes(projectFour.current)}
         index={4}
         title="Predictive Supply Chain Telemetry"
-        description="Event-driven telemetry ingestion engine processing IoT machine sensor streams (temp, vibration, pressure) via AWS Kinesis, Databricks Auto Loader, Delta Lake 3.x Liquid Clustering, and dbt."
+        description="An AWS & Databricks telemetry pipeline ingesting 50,000 IoT sensor events/second using AWS Kinesis and Databricks Auto Loader into S3 Delta Lake tables. Runs dbt dimensional models with automated quarantine routing to catch malformed data streams and highlight machine failure risks."
         buttonText="Explore case study"
         buttonLink="/projects/supply-chain-telemetry-pipeline"
         model={{

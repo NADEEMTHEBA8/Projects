@@ -1,0 +1,37 @@
+---
+title: 'YMovies Recommendation Engine: Building Content-Based Filtering at Scale'
+abstract: Designing weighted feature extraction, Cosine Similarity scoring, and automated vector matrix indexing across large movie metadata pipelines.
+date: '2023-05-24'
+banner: /assets/supply-chain-cover.png
+---
+
+## Building a Personalized Movie Recommendation Engine
+
+How do platforms like Netflix serve instant "Because you watched..." recommendations to millions of users? In this technical walkthrough, we explore how to build a production hybrid recommendation engine combining content-based feature matrices with dynamic user quiz preferences.
+
+![Recommendation Architecture](/assets/supply-chain-cover.png)
+
+## Hybrid Recommender Architecture
+
+1. **Content-Based Similarity**: Computes TF-IDF vectors over metadata (genres, cast, director, keywords) and measures cosine similarity across all items.
+2. **Cold-Start Quiz Savior**: When a new user has zero viewing history, a quiz filter immediately narrows candidates by genre, recency, and runtime preferences.
+3. **Personalized Hybrid Scoring**: Merges user watch history, liked items, and similarity scores with a diversity weighting factor to prevent filter bubbles.
+
+```python
+def get_recommendations(self, user_id: str, top_n: int = 10):
+    user_liked = self.get_liked_movies(user_id)
+    similar_candidates = {}
+    
+    for movie_id in user_liked:
+        matches = self.content_recommender.get_similar_movies(movie_id, top_n=5)
+        for item in matches:
+            relevance = item['similarity'] * self.diversity_factor
+            similar_candidates[item['id']] = relevance
+
+    return sorted(similar_candidates.items(), key=lambda x: x[1], reverse=True)[:top_n]
+```
+
+## Performance & Serving
+
+- **Pre-computed Similarity Matrix**: Matrix operations are computed during pipeline build and cached for instant $O(1)$ response times.
+- **FastAPI / Flask Microservice**: Exposes clean JSON endpoints (`/recommendations/similar/<id>`, `/recommendations/personalized/<user_id>`) with sub-20ms latency.

@@ -1,4 +1,4 @@
-import coverdriveTexture from '~/assets/coverdrive-cover.png';
+import coverdriveTexture from '~/assets/coverdrive-cover.gif';
 import { Button } from '~/components/button';
 import { Footer } from '~/components/footer';
 import { Heading } from '~/components/heading';
