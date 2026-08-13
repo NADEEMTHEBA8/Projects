@@ -30,12 +30,12 @@ export const navLinks = [
 export const socialLinks = [
   {
     label: 'LinkedIn',
-    url: `http://linkedin.com/in/${config.linkedin}`,
+    url: `https://linkedin.com/in/${config.linkedin}`,
     icon: 'figma',
   },
   {
     label: 'Github',
-    url: `http://github.com/${config.github}`,
+    url: `https://github.com/${config.github}`,
     icon: 'github',
   },
 ];
