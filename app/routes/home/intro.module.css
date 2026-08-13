@@ -11,6 +11,7 @@
   width: 100%;
   position: relative;
   top: calc(var(--spaceL) * -1);
+  transform: translateX(-40px);
 
   @media (--mediaDesktop) {
     max-width: 920px;
@@ -22,6 +23,7 @@
 
   @media (--mediaMobile) {
     top: calc(var(--space3XL) * -1);
+    transform: translateX(0);
   }
 
   @media (--mediaMobileS) {
