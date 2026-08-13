@@ -109,6 +109,7 @@ export const Home = () => {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
+        alternate={true}
         title="Coverdrive — Cricket Analytics Lakehouse"
         description="A PySpark and DuckDB data lakehouse hosted on AWS S3 processing 1.26M+ ball-by-ball T20 cricket delivery records. Uses Apache Airflow for daily batch orchestration, Pandera schema gates to block bad data before storage, and PySpark key-salting to eliminate executor memory skew on large joins."
         buttonText="Explore case study"
@@ -149,6 +150,7 @@ export const Home = () => {
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={3}
+        alternate={true}
         title="Credit Risk Analytics Pipeline"
         description="A memory-efficient financial ML data pipeline processing 57M loan records under 4GB RAM using embedded DuckDB and AWS S3 storage. Applies integer downcasting to optimize memory usage and pairs with an XGBoost decision model tuned specifically to detect high-cost credit defaults."
         buttonText="Explore case study"
