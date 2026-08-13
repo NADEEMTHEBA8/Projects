@@ -1,3 +1,10 @@
+name = "projects"
+main = "./build/server/index.js"
+compatibility_date = "2024-03-01"
+
+[site]
+bucket = "./build/client"
+
 kv_namespaces = [
   { id = "MY_KV", binding="MY_KV" }
 ]
