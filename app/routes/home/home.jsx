@@ -8,6 +8,7 @@ import { Intro } from './intro';
 import { Profile } from './profile';
 import { ProjectSummary } from './project-summary';
 import { ProjectVault } from '~/components/project-vault';
+import { Terminal } from '~/components/terminal/terminal';
 import { ResumeSection } from './resume-section';
 import { useEffect, useRef, useState } from 'react';
 import config from '~/config.json';
@@ -184,6 +185,9 @@ export const Home = () => {
         }}
       />
       <ProjectVault />
+      <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 2rem' }}>
+        <Terminal />
+      </div>
       <ResumeSection
         sectionRef={resume}
         visible={visibleSections.includes(resume.current)}

@@ -9,6 +9,7 @@ import { Text } from '~/components/text';
 import { MetricsGrid } from '~/components/metrics-grid/metrics-grid';
 import { ImageLightbox } from '~/components/image-lightbox/image-lightbox';
 import { CodeTabs } from '~/components/code-tabs/code-tabs';
+import { InteractiveArchitecture } from '~/components/interactive-architecture/interactive-architecture';
 import {
   ProjectBackground,
   ProjectContainer,
@@ -104,7 +105,7 @@ Workspace: https://adb-123456789.azuredatabricks.net`
 ];
 
 export const meta = () => {
-  return baseMeta({ title, description, prefix: 'Projects' });
+  return baseMeta({ title, description, prefix: 'Projects', ogImage: supplyChainTexture });
 };
 
 export const SupplyChainTelemetry = () => {
@@ -199,68 +200,57 @@ export const SupplyChainTelemetry = () => {
         <ProjectSection light={isDark}>
           <ProjectSectionContent>
             <ProjectTextRow>
-              <ProjectSectionHeading>System Architecture</ProjectSectionHeading>
+              <ProjectSectionHeading>Interactive System Architecture</ProjectSectionHeading>
               <ProjectSectionText>
-                Streaming Medallion architecture flowing from edge IoT sensors and ERP CDC through AWS Kinesis, Databricks Auto Loader, Delta Lake (Bronze/Silver/Gold), dbt Core 1.8, and ERP sync:
+                Click any architecture stage node below to inspect Kinesis sharding, Databricks Auto Loader schema tracking, physical Delta partitioning, and ERP sync:
               </ProjectSectionText>
             </ProjectTextRow>
 
-            <div className={styles.diagramContainer} style={{ marginTop: '2rem' }}>
-              <svg className={styles.diagramSvg} viewBox="0 0 900 340" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="900" height="340" rx="12" fill="var(--backgroundLight)" stroke="var(--primary)" strokeOpacity="0.2" />
-                
-                {/* 1. Ingestion */}
-                <rect x="30" y="40" width="180" height="260" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
-                <text x="50" y="75" fill="var(--textTitle)" fontSize="15" fontWeight="700">1. INGESTION</text>
-                <text x="50" y="110" fill="var(--textBody)" fontSize="12">• IoT Edge Sensors</text>
-                <text x="50" y="130" fill="var(--textBody)" fontSize="12">  (Temp, Vibration, Press)</text>
-                <text x="50" y="165" fill="var(--textBody)" fontSize="12">• PostgreSQL ERP CDC</text>
-                <text x="50" y="185" fill="var(--textBody)" fontSize="12">  (Workorders)</text>
-                <text x="50" y="220" fill="var(--accent)" fontSize="12" fontWeight="600">AWS Kinesis Shards</text>
-
-                {/* Arrow 1 */}
-                <path d="M210 170 H240" stroke="var(--accent)" strokeWidth="3" markerEnd="url(#arrow)" />
-
-                {/* 2. Databricks Auto Loader */}
-                <rect x="250" y="40" width="190" height="260" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
-                <text x="270" y="75" fill="var(--textTitle)" fontSize="15" fontWeight="700">2. AUTO LOADER</text>
-                <text x="270" y="110" fill="var(--textBody)" fontSize="12">• Databricks Auto Loader</text>
-                <text x="270" y="130" fill="var(--textBody)" fontSize="12">  (cloudFiles JSON)</text>
-                <text x="270" y="165" fill="var(--textBody)" fontSize="12">• Schema Tracking</text>
-                <text x="270" y="185" fill="var(--textBody)" fontSize="12">  (Rescue Column)</text>
-                <text x="270" y="220" fill="var(--accent)" fontSize="12" fontWeight="600">Runtime Inference</text>
-
-                {/* Arrow 2 */}
-                <path d="M440 170 H470" stroke="var(--accent)" strokeWidth="3" markerEnd="url(#arrow)" />
-
-                {/* 3. Storage */}
-                <rect x="480" y="40" width="180" height="260" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
-                <text x="500" y="75" fill="var(--textTitle)" fontSize="15" fontWeight="700">3. DELTA LAKE</text>
-                <text x="500" y="110" fill="var(--textBody)" fontSize="12">• Bronze: Raw Parquet</text>
-                <text x="500" y="135" fill="var(--textBody)" fontSize="12">• Silver: Structured</text>
-                <text x="500" y="160" fill="var(--textBody)" fontSize="12">• Gold: 24h Failure Risk</text>
-                <text x="500" y="205" fill="var(--textBody)" fontSize="12">• Composite Partition</text>
-                <text x="500" y="225" fill="var(--accent)" fontSize="12" fontWeight="600">(plant_id, date)</text>
-
-                {/* Arrow 3 */}
-                <path d="M660 170 H690" stroke="var(--accent)" strokeWidth="3" markerEnd="url(#arrow)" />
-
-                {/* 4. Serving */}
-                <rect x="700" y="40" width="170" height="260" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
-                <text x="720" y="75" fill="var(--textTitle)" fontSize="15" fontWeight="700">4. SERVING</text>
-                <text x="720" y="110" fill="var(--textBody)" fontSize="12">• dbt Core 1.8</text>
-                <text x="720" y="130" fill="var(--textBody)" fontSize="12">  (Transformations)</text>
-                <text x="720" y="165" fill="var(--textBody)" fontSize="12">• PostgreSQL ERP Sync</text>
-                <text x="720" y="205" fill="var(--textBody)" fontSize="12">• Risk Dashboard</text>
-                <text x="720" y="225" fill="var(--accent)" fontSize="12" fontWeight="600">Actionable Signals</text>
-
-                <defs>
-                  <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                    <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)" />
-                  </marker>
-                </defs>
-              </svg>
-            </div>
+            <InteractiveArchitecture
+              title="Predictive Supply Chain Telemetry Architecture Flow"
+              nodes={[
+                {
+                  title: 'IoT & Kinesis',
+                  subtitle: '50,000 Ev/Sec',
+                  badge: '16 Workers',
+                  description: 'Ingesting IoT machine sensor payloads via a 16-worker ThreadPoolExecutor emitting to AWS Kinesis shards.',
+                  specs: [
+                    { label: 'Throughput', value: '50,000 IoT Events/Second' },
+                    { label: 'Ingestion Threading', value: 'ThreadPoolExecutor (16 Workers)' },
+                  ]
+                },
+                {
+                  title: 'Auto Loader',
+                  subtitle: 'Databricks Streaming',
+                  badge: 'Rescue Column',
+                  description: 'Databricks Auto Loader (cloudFiles) streaming micro-batches with automatic schema drift tracking.',
+                  specs: [
+                    { label: 'Streaming Mode', value: 'Databricks Auto Loader 15.x' },
+                    { label: 'Quarantine', value: '_rescued_data Column' },
+                  ]
+                },
+                {
+                  title: 'Delta Lake',
+                  subtitle: 'AWS S3 Medallion',
+                  badge: 'Composite Partitions',
+                  description: 'Persisting Bronze, Silver, and Gold Delta tables partitioned physically by (plant_id, event_date).',
+                  specs: [
+                    { label: 'Table Format', value: 'Delta Lake 3.x (S3 Storage)' },
+                    { label: 'Partitioning', value: 'PARTITIONED BY (plant_id, event_date)' },
+                  ]
+                },
+                {
+                  title: 'Serving & ERP',
+                  subtitle: 'dbt Core & Dashboards',
+                  badge: '5/5 Passed',
+                  description: 'Running dbt Core 1.8 models for 24-hour machine risk prediction and syncing signals to ERP systems.',
+                  specs: [
+                    { label: 'dbt Transformation', value: 'dbt Core 1.8 Models' },
+                    { label: 'Asset Bundles', value: 'Databricks DABs Manifest' },
+                  ]
+                }
+              ]}
+            />
           </ProjectSectionContent>
         </ProjectSection>
 

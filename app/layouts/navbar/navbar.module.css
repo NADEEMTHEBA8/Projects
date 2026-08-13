@@ -60,20 +60,14 @@
   }
 
   .navLink {
-    padding: var(--spaceXL) var(--spaceL);
-    color: color-mix(in lab, var(--text) 80%, transparent);
-    font-weight: var(--fontWeightBold);
-    font-size: var(--headerNavFontSize);
-    letter-spacing: 0.05em;
+    padding: var(--spaceS) var(--spaceM);
+    color: var(--textBody);
     text-decoration: none;
+    font-weight: var(--fontWeightMedium);
     position: relative;
-    transition: color var(--durationS) ease 0.1s;
-    line-height: 1;
-    display: inline-flex;
-    align-items: center;
+    transition: color var(--durationM) ease;
 
     &:hover,
-    &:active,
     &[aria-current='page'] {
       color: var(--textBody);
     }

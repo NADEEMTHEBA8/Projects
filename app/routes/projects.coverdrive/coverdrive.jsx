@@ -9,6 +9,8 @@ import { Text } from '~/components/text';
 import { MetricsGrid } from '~/components/metrics-grid/metrics-grid';
 import { ImageLightbox } from '~/components/image-lightbox/image-lightbox';
 import { CodeTabs } from '~/components/code-tabs/code-tabs';
+import { InteractiveArchitecture } from '~/components/interactive-architecture/interactive-architecture';
+import { Terminal } from '~/components/terminal/terminal';
 import {
   ProjectBackground,
   ProjectContainer,
@@ -128,7 +130,7 @@ Plan: 12 to add, 0 to change, 0 to destroy.`
 ];
 
 export const meta = () => {
-  return baseMeta({ title, description, prefix: 'Projects' });
+  return baseMeta({ title, description, prefix: 'Projects', ogImage: coverdriveTexture });
 };
 
 export const Coverdrive = () => {
@@ -228,68 +230,57 @@ export const Coverdrive = () => {
         <ProjectSection light={isDark}>
           <ProjectSectionContent>
             <ProjectTextRow>
-              <ProjectSectionHeading>System Architecture</ProjectSectionHeading>
+              <ProjectSectionHeading>Interactive System Architecture</ProjectSectionHeading>
               <ProjectSectionText>
-                End-to-end Medallion pipeline architecture from raw JSON/CSV scrapes through Airflow task guards, PySpark salting, S3 Parquet storage, DuckDB OLAP, and dbt analytics model rendering:
+                Click any architecture stage node below to inspect Pandera task guards, PySpark salting parameters, DuckDB memory options, and dbt serving models:
               </ProjectSectionText>
             </ProjectTextRow>
 
-            <div className={styles.diagramContainer} style={{ marginTop: '2rem' }}>
-              <svg className={styles.diagramSvg} viewBox="0 0 900 340" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="900" height="340" rx="12" fill="var(--backgroundLight)" stroke="var(--primary)" strokeOpacity="0.2" />
-                
-                {/* 1. Ingestion */}
-                <rect x="30" y="40" width="180" height="260" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
-                <text x="50" y="75" fill="var(--textTitle)" fontSize="15" fontWeight="700">1. INGESTION</text>
-                <text x="50" y="110" fill="var(--textBody)" fontSize="12">• Cricsheet Archives</text>
-                <text x="50" y="130" fill="var(--textBody)" fontSize="12">  (1.26M Delivery Rows)</text>
-                <text x="50" y="160" fill="var(--textBody)" fontSize="12">• ESPN Cricinfo Scraper</text>
-                <text x="50" y="180" fill="var(--textBody)" fontSize="12">  (Player Telemetry)</text>
-                <text x="50" y="220" fill="var(--accent)" fontSize="12" fontWeight="600">Airflow 2.8 DAG</text>
-
-                {/* Arrow 1 */}
-                <path d="M210 170 H240" stroke="var(--accent)" strokeWidth="3" markerEnd="url(#arrow)" />
-
-                {/* 2. Quality & Salting */}
-                <rect x="250" y="40" width="190" height="260" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
-                <text x="270" y="75" fill="var(--textTitle)" fontSize="15" fontWeight="700">2. SHIFT-LEFT GATE</text>
-                <text x="270" y="110" fill="var(--textBody)" fontSize="12">• Pandera Contracts</text>
-                <text x="270" y="130" fill="var(--textBody)" fontSize="12">  (validation_rules.py)</text>
-                <text x="270" y="165" fill="var(--textBody)" fontSize="12">• S3 Quarantine Guard</text>
-                <text x="270" y="205" fill="var(--textBody)" fontSize="12">• PySpark Key-Salting</text>
-                <text x="270" y="225" fill="var(--accent)" fontSize="12" fontWeight="600">(_SALT_BUCKETS = 10)</text>
-
-                {/* Arrow 2 */}
-                <path d="M440 170 H470" stroke="var(--accent)" strokeWidth="3" markerEnd="url(#arrow)" />
-
-                {/* 3. Storage */}
-                <rect x="480" y="40" width="180" height="260" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
-                <text x="500" y="75" fill="var(--textTitle)" fontSize="15" fontWeight="700">3. STORAGE</text>
-                <text x="500" y="110" fill="var(--textBody)" fontSize="12">• AWS S3 Bucket</text>
-                <text x="500" y="130" fill="var(--textBody)" fontSize="12">  (461 MB Parquet)</text>
-                <text x="500" y="165" fill="var(--textBody)" fontSize="12">• DuckDB In-Process</text>
-                <text x="500" y="185" fill="var(--textBody)" fontSize="12">  Vectorized Engine</text>
-                <text x="500" y="220" fill="var(--accent)" fontSize="12" fontWeight="600">S3 Express Parquet</text>
-
-                {/* Arrow 3 */}
-                <path d="M660 170 H690" stroke="var(--accent)" strokeWidth="3" markerEnd="url(#arrow)" />
-
-                {/* 4. Serving */}
-                <rect x="700" y="40" width="170" height="260" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
-                <text x="720" y="75" fill="var(--textTitle)" fontSize="15" fontWeight="700">4. ANALYTICS</text>
-                <text x="720" y="110" fill="var(--textBody)" fontSize="12">• dbt Core 1.8</text>
-                <text x="720" y="130" fill="var(--textBody)" fontSize="12">  (dim_player, fact)</text>
-                <text x="720" y="165" fill="var(--textBody)" fontSize="12">• Career Stats Mart</text>
-                <text x="720" y="205" fill="var(--textBody)" fontSize="12">• Streamlit Dashboard</text>
-                <text x="720" y="225" fill="var(--accent)" fontSize="12" fontWeight="600">FastAPI JSON API</text>
-
-                <defs>
-                  <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                    <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)" />
-                  </marker>
-                </defs>
-              </svg>
-            </div>
+            <InteractiveArchitecture
+              title="Coverdrive End-to-End Medallion Architecture Flow"
+              nodes={[
+                {
+                  title: 'Ingestion & Scrapes',
+                  subtitle: 'ESPN & Cricsheet',
+                  badge: '1.26M Records',
+                  description: 'Scraping 5,591 T20 match archives and raw ball delivery JSON events via Airflow 2.8 DAG.',
+                  specs: [
+                    { label: 'Data Source', value: 'Cricsheet JSON + ESPN Scrapes' },
+                    { label: 'Volume', value: '1,264,534 Ball Delivery Rows' },
+                  ]
+                },
+                {
+                  title: 'Shift-Left Gate',
+                  subtitle: 'Pandera & PySpark',
+                  badge: '-74% Join Skew',
+                  description: 'Enforcing Pandera schema guards and PySpark key-salting (_SALT_BUCKETS=10) before S3 loads.',
+                  specs: [
+                    { label: 'Contract Guard', value: 'Pandera Airflow Pre-Validation' },
+                    { label: 'Skew Mitigation', value: 'Random Salt Buckets (0..9)' },
+                  ]
+                },
+                {
+                  title: 'Storage & Engine',
+                  subtitle: 'AWS S3 & DuckDB',
+                  badge: 'Vectorized Engine',
+                  description: 'Persisting S3 Express Parquet tables and querying via in-process DuckDB vectorized engine.',
+                  specs: [
+                    { label: 'Storage', value: 'AWS S3 Medallion Parquet' },
+                    { label: 'Query Engine', value: 'DuckDB In-Process OLAP' },
+                  ]
+                },
+                {
+                  title: 'Analytics & Serving',
+                  subtitle: 'dbt Core 1.8 & API',
+                  badge: '35/35 Passed',
+                  description: 'Transforming Gold metrics through dbt Core 1.8 models into FastAPI endpoints and Streamlit UI.',
+                  specs: [
+                    { label: 'dbt Models', value: 'dim_player, fact_career_stats' },
+                    { label: 'Serving', value: 'FastAPI + Streamlit Dashboard' },
+                  ]
+                }
+              ]}
+            />
           </ProjectSectionContent>
         </ProjectSection>
 

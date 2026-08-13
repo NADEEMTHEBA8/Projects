@@ -11,11 +11,13 @@ import { NavToggle } from './nav-toggle';
 import { ThemeToggle } from './theme-toggle';
 import { navLinks, socialLinks } from './nav-data';
 import config from '~/config.json';
+import { BookModal } from '~/components/book-modal/book-modal';
 import styles from './navbar.module.css';
 
 export const Navbar = () => {
   const [current, setCurrent] = useState();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isBookModalOpen, setIsBookModalOpen] = useState(false);
   const [target, setTarget] = useState();
   const { theme } = useTheme();
   const location = useLocation();
@@ -169,6 +171,13 @@ export const Navbar = () => {
               {label}
             </RouterLink>
           ))}
+          <button
+            data-navbar-item
+            className={styles.bookCallButton}
+            onClick={() => setIsBookModalOpen(true)}
+          >
+            📅 Book Call
+          </button>
         </div>
         <NavbarIcons desktop />
       </nav>
@@ -194,12 +203,22 @@ export const Navbar = () => {
                 {label}
               </RouterLink>
             ))}
+            <button
+              className={styles.mobileBookCallButton}
+              onClick={() => {
+                setMenuOpen(false);
+                setIsBookModalOpen(true);
+              }}
+            >
+              📅 Book Intro Call
+            </button>
             <NavbarIcons />
             <ThemeToggle isMobile />
           </nav>
         )}
       </Transition>
       {!isMobile && <ThemeToggle data-navbar-item />}
+      <BookModal isOpen={isBookModalOpen} onClose={() => setIsBookModalOpen(false)} />
     </header>
   );
 };

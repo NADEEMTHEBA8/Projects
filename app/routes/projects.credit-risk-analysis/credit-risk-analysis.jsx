@@ -7,6 +7,7 @@ import { Text } from '~/components/text';
 import { MetricsGrid } from '~/components/metrics-grid/metrics-grid';
 import { ImageLightbox } from '~/components/image-lightbox/image-lightbox';
 import { CodeTabs } from '~/components/code-tabs/code-tabs';
+import { InteractiveArchitecture } from '~/components/interactive-architecture/interactive-architecture';
 import {
   ProjectBackground,
   ProjectContainer,
@@ -113,7 +114,7 @@ tests/unit/test_utils.py::TestConfiguration::test_decision_beta_is_above_one PAS
 ];
 
 export const meta = () => {
-  return baseMeta({ title, description, prefix: 'Projects' });
+  return baseMeta({ title, description, prefix: 'Projects', ogImage: creditRiskTexture });
 };
 
 export const CreditRiskAnalysis = () => {
@@ -213,68 +214,57 @@ export const CreditRiskAnalysis = () => {
         <ProjectSection light={isDark}>
           <ProjectSectionContent>
             <ProjectTextRow>
-              <ProjectSectionHeading>System Architecture</ProjectSectionHeading>
+              <ProjectSectionHeading>Interactive System Architecture</ProjectSectionHeading>
               <ProjectSectionText>
-                Out-of-core pipeline architecture transforming 57M financial records through DuckDB limits, memory downcasting, dbt-duckdb feature modeling, asymmetric XGBoost decisioning, and risk mart export:
+                Click any architecture stage node below to inspect DuckDB limits, memory downcasting, asymmetric loss tuning, and risk floor guardrails:
               </ProjectSectionText>
             </ProjectTextRow>
 
-            <div className={styles.diagramContainer} style={{ marginTop: '2rem' }}>
-              <svg className={styles.diagramSvg} viewBox="0 0 900 340" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="900" height="340" rx="12" fill="var(--backgroundLight)" stroke="var(--primary)" strokeOpacity="0.2" />
-                
-                {/* 1. Ingestion */}
-                <rect x="30" y="40" width="180" height="260" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
-                <text x="50" y="75" fill="var(--textTitle)" fontSize="15" fontWeight="700">1. RAW STORAGE</text>
-                <text x="50" y="110" fill="var(--textBody)" fontSize="12">• Raw CSV Files</text>
-                <text x="50" y="130" fill="var(--textBody)" fontSize="12">  (57M Rows / 10GB Data)</text>
-                <text x="50" y="165" fill="var(--textBody)" fontSize="12">• Embedded DuckDB</text>
-                <text x="50" y="185" fill="var(--textBody)" fontSize="12">  (max_memory='3GB')</text>
-                <text x="50" y="220" fill="var(--accent)" fontSize="12" fontWeight="600">Out-of-Core Engine</text>
-
-                {/* Arrow 1 */}
-                <path d="M210 170 H240" stroke="var(--accent)" strokeWidth="3" markerEnd="url(#arrow)" />
-
-                {/* 2. Downcasting */}
-                <rect x="250" y="40" width="190" height="260" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
-                <text x="270" y="75" fill="var(--textTitle)" fontSize="15" fontWeight="700">2. MEMORY OPT</text>
-                <text x="270" y="110" fill="var(--textBody)" fontSize="12">• reduce_memory()</text>
-                <text x="270" y="130" fill="var(--textBody)" fontSize="12">  (Numeric Downcasting)</text>
-                <text x="270" y="165" fill="var(--textBody)" fontSize="12">• dbt-duckdb 1.8</text>
-                <text x="270" y="185" fill="var(--textBody)" fontSize="12">  (Staging -&gt; Gold)</text>
-                <text x="270" y="220" fill="var(--accent)" fontSize="12" fontWeight="600">&lt; 4GB RAM Ceiling</text>
-
-                {/* Arrow 2 */}
-                <path d="M440 170 H470" stroke="var(--accent)" strokeWidth="3" markerEnd="url(#arrow)" />
-
-                {/* 3. Classification */}
-                <rect x="480" y="40" width="180" height="260" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
-                <text x="500" y="75" fill="var(--textTitle)" fontSize="15" fontWeight="700">3. MODEL TUNING</text>
-                <text x="500" y="110" fill="var(--textBody)" fontSize="12">• XGBoost Classifier</text>
-                <text x="500" y="130" fill="var(--textBody)" fontSize="12">  (Asymmetric F_beta)</text>
-                <text x="500" y="165" fill="var(--textBody)" fontSize="12">• F_beta (beta = 2.5)</text>
-                <text x="500" y="185" fill="var(--textBody)" fontSize="12">  (8:1 Cost Ratio)</text>
-                <text x="500" y="220" fill="var(--accent)" fontSize="12" fontWeight="600">Threshold Sweeper</text>
-
-                {/* Arrow 3 */}
-                <path d="M660 170 H690" stroke="var(--accent)" strokeWidth="3" markerEnd="url(#arrow)" />
-
-                {/* 4. Risk Mart */}
-                <rect x="700" y="40" width="170" height="260" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
-                <text x="720" y="75" fill="var(--textTitle)" fontSize="15" fontWeight="700">4. SERVING MART</text>
-                <text x="720" y="110" fill="var(--textBody)" fontSize="12">• P(Default) &gt;= 0.10</text>
-                <text x="720" y="130" fill="var(--textBody)" fontSize="12">  Safety Floor Guardrail</text>
-                <text x="720" y="165" fill="var(--textBody)" fontSize="12">• High-Risk Flags</text>
-                <text x="720" y="205" fill="var(--textBody)" fontSize="12">• Parquet / Postgres</text>
-                <text x="720" y="225" fill="var(--accent)" fontSize="12" fontWeight="600">FastAPI Risk API</text>
-
-                <defs>
-                  <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                    <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)" />
-                  </marker>
-                </defs>
-              </svg>
-            </div>
+            <InteractiveArchitecture
+              title="Enterprise Credit Risk Pipeline Architecture Flow"
+              nodes={[
+                {
+                  title: 'Raw Storage',
+                  subtitle: 'DuckDB Engine',
+                  badge: 'Out-of-Core',
+                  description: 'Querying 57,000,000 multi-table financial records out-of-core via embedded DuckDB 1.1.',
+                  specs: [
+                    { label: 'Dataset Scale', value: '57M Applicants / 10GB Data' },
+                    { label: 'DuckDB Limit', value: "SET max_memory='3GB';" },
+                  ]
+                },
+                {
+                  title: 'Memory Opt',
+                  subtitle: 'Downcast & dbt',
+                  badge: '< 4GB RAM Ceiling',
+                  description: 'Downcasting numeric dtypes (reduce_memory()) and running dbt-duckdb 1.8 models.',
+                  specs: [
+                    { label: 'Downcasting', value: 'int64 -> int16, float64 -> float32' },
+                    { label: 'RAM Footprint', value: 'Kept strictly under 4GB RAM' },
+                  ]
+                },
+                {
+                  title: 'Model Tuning',
+                  subtitle: 'XGBoost & Loss',
+                  badge: 'beta = 2.5',
+                  description: 'Tuning decision thresholds with asymmetric F-beta loss (beta=2.5) matching the 8:1 cost ratio.',
+                  specs: [
+                    { label: 'Loss Objective', value: 'F-beta Loss (beta=2.5)' },
+                    { label: 'Recall Weight', value: '6.25x over Precision' },
+                  ]
+                },
+                {
+                  title: 'Serving Mart',
+                  subtitle: 'Guardrails & API',
+                  badge: 'P(Default) >= 0.10',
+                  description: 'Enforcing a 0.10 default risk floor guardrail and exporting risk classification marts.',
+                  specs: [
+                    { label: 'Safety Ceiling', value: 'Default Probability >= 10%' },
+                    { label: 'API Serving', value: 'FastAPI Risk Endpoint' },
+                  ]
+                }
+              ]}
+            />
           </ProjectSectionContent>
         </ProjectSection>
 

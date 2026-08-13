@@ -9,6 +9,7 @@ import { Text } from '~/components/text';
 import { MetricsGrid } from '~/components/metrics-grid/metrics-grid';
 import { ImageLightbox } from '~/components/image-lightbox/image-lightbox';
 import { CodeTabs } from '~/components/code-tabs/code-tabs';
+import { InteractiveArchitecture } from '~/components/interactive-architecture/interactive-architecture';
 import {
   ProjectBackground,
   ProjectContainer,
@@ -101,7 +102,7 @@ tests/unit/test_spark_transforms.py::test_mask_pii_hashes_sensitive_fields_deter
 ];
 
 export const meta = () => {
-  return baseMeta({ title, description, prefix: 'Projects' });
+  return baseMeta({ title, description, prefix: 'Projects', ogImage: fraudTexture });
 };
 
 export const RealtimeFraudFeatureStore = () => {
@@ -201,68 +202,57 @@ export const RealtimeFraudFeatureStore = () => {
         <ProjectSection light={isDark}>
           <ProjectSectionContent>
             <ProjectTextRow>
-              <ProjectSectionHeading>System Architecture</ProjectSectionHeading>
+              <ProjectSectionHeading>Interactive System Architecture</ProjectSectionHeading>
               <ProjectSectionText>
-                Event-driven feature pipeline mapping database changes from PostgreSQL WAL logs through Debezium CDC, Kafka KRaft, PySpark stateful streaming, Redis feature store, and FastAPI inference serving:
+                Click any architecture stage node below to inspect CDC WAL capture, Kafka KRaft partitions, Redis pipeline caching, and FastAPI inference serving:
               </ProjectSectionText>
             </ProjectTextRow>
 
-            <div className={styles.diagramContainer} style={{ marginTop: '2rem' }}>
-              <svg className={styles.diagramSvg} viewBox="0 0 900 340" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="900" height="340" rx="12" fill="var(--backgroundLight)" stroke="var(--primary)" strokeOpacity="0.2" />
-                
-                {/* 1. Ingress */}
-                <rect x="30" y="40" width="180" height="260" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
-                <text x="50" y="75" fill="var(--textTitle)" fontSize="15" fontWeight="700">1. INGRESS &amp; CDC</text>
-                <text x="50" y="110" fill="var(--textBody)" fontSize="12">• PostgreSQL Primary</text>
-                <text x="50" y="130" fill="var(--textBody)" fontSize="12">  (WAL Change Logs)</text>
-                <text x="50" y="165" fill="var(--textBody)" fontSize="12">• Debezium Connector</text>
-                <text x="50" y="205" fill="var(--textBody)" fontSize="12">• Apache Kafka</text>
-                <text x="50" y="225" fill="var(--accent)" fontSize="12" fontWeight="600">(KRaft Mode)</text>
-
-                {/* Arrow 1 */}
-                <path d="M210 170 H240" stroke="var(--accent)" strokeWidth="3" markerEnd="url(#arrow)" />
-
-                {/* 2. Streaming Compute */}
-                <rect x="250" y="40" width="190" height="260" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
-                <text x="270" y="75" fill="var(--textTitle)" fontSize="15" fontWeight="700">2. STREAM COMPUTE</text>
-                <text x="270" y="110" fill="var(--textBody)" fontSize="12">• PySpark Streaming</text>
-                <text x="270" y="130" fill="var(--textBody)" fontSize="12">  (State in RocksDB)</text>
-                <text x="270" y="165" fill="var(--textBody)" fontSize="12">• Window Aggregations</text>
-                <text x="270" y="185" fill="var(--textBody)" fontSize="12">  (1h count, 24h sum)</text>
-                <text x="270" y="220" fill="var(--accent)" fontSize="12" fontWeight="600">Kafka DLQ Router</text>
-
-                {/* Arrow 2 */}
-                <path d="M440 170 H470" stroke="var(--accent)" strokeWidth="3" markerEnd="url(#arrow)" />
-
-                {/* 3. Storage & Cache */}
-                <rect x="480" y="40" width="180" height="260" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
-                <text x="500" y="75" fill="var(--textTitle)" fontSize="15" fontWeight="700">3. CACHE &amp; LAKE</text>
-                <text x="500" y="110" fill="var(--textBody)" fontSize="12">• Redis 7.0 Cache</text>
-                <text x="500" y="130" fill="var(--textBody)" fontSize="12">  (Sub-10ms Pipeline)</text>
-                <text x="500" y="165" fill="var(--textBody)" fontSize="12">• MinIO Delta Lake</text>
-                <text x="500" y="185" fill="var(--textBody)" fontSize="12">  (Historical Parquet)</text>
-                <text x="500" y="220" fill="var(--accent)" fontSize="12" fontWeight="600">24h Key TTL</text>
-
-                {/* Arrow 3 */}
-                <path d="M660 170 H690" stroke="var(--accent)" strokeWidth="3" markerEnd="url(#arrow)" />
-
-                {/* 4. Serving */}
-                <rect x="700" y="40" width="170" height="260" rx="8" fill="var(--background)" stroke="var(--primary)" strokeWidth="2" />
-                <text x="720" y="75" fill="var(--textTitle)" fontSize="15" fontWeight="700">4. ML SERVING</text>
-                <text x="720" y="110" fill="var(--textBody)" fontSize="12">• FastAPI Microservice</text>
-                <text x="720" y="130" fill="var(--textBody)" fontSize="12">  (/v1/features/user)</text>
-                <text x="720" y="165" fill="var(--textBody)" fontSize="12">• Fraud Model Inference</text>
-                <text x="720" y="205" fill="var(--textBody)" fontSize="12">• Sub-10ms Latency</text>
-                <text x="720" y="225" fill="var(--accent)" fontSize="12" fontWeight="600">x-process-time-ms</text>
-
-                <defs>
-                  <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                    <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)" />
-                  </marker>
-                </defs>
-              </svg>
-            </div>
+            <InteractiveArchitecture
+              title="Real-Time Fraud Feature Store Architecture Flow"
+              nodes={[
+                {
+                  title: 'Ingress & CDC',
+                  subtitle: 'Postgres & Debezium',
+                  badge: 'Zero Table Locks',
+                  description: 'Capturing PostgreSQL WAL log events via Debezium CDC and streaming to Kafka KRaft.',
+                  specs: [
+                    { label: 'CDC Connector', value: 'Debezium PostgreSQL WAL' },
+                    { label: 'Broker Mode', value: 'Apache Kafka KRaft' },
+                  ]
+                },
+                {
+                  title: 'Stream Compute',
+                  subtitle: 'PySpark & RocksDB',
+                  badge: 'Kafka DLQ Router',
+                  description: 'Computing 1-hour and 24-hour window aggregations in PySpark with state in RocksDB.',
+                  specs: [
+                    { label: 'Window State', value: 'RocksDB LSM Storage' },
+                    { label: 'Data Quality', value: 'Malformed JSON DLQ' },
+                  ]
+                },
+                {
+                  title: 'Cache & Lake',
+                  subtitle: 'Redis 7.0 & Delta',
+                  badge: 'Sub-10ms Pipeline',
+                  description: 'Writing feature vectors to Redis 7.0 via non-transactional pipelining with 24-hour TTL.',
+                  specs: [
+                    { label: 'Feature Store', value: 'Redis 7.0 (24h TTL)' },
+                    { label: 'Historical Lake', value: 'MinIO S3 Delta Lake 3.x' },
+                  ]
+                },
+                {
+                  title: 'ML Serving',
+                  subtitle: 'FastAPI & Scoring',
+                  badge: 'x-process-time-ms',
+                  description: 'Serving sub-10ms fraud feature vectors to ML scoring models via FastAPI microservice.',
+                  specs: [
+                    { label: 'API Framework', value: 'FastAPI Microservice' },
+                    { label: 'Latency SLA', value: '< 10ms Response Time' },
+                  ]
+                }
+              ]}
+            />
           </ProjectSectionContent>
         </ProjectSection>
 
