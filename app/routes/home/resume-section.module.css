@@ -1,0 +1,83 @@
+@layer layout {
+  .resumeSection {
+    width: 100vw;
+    min-height: 100vh;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space2XL);
+    max-width: var(--maxWidthL);
+    width: 100%;
+    align-items: center;
+
+    @media (--mediaMobile) {
+      grid-template-columns: 1fr;
+      gap: var(--spaceXL);
+    }
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .title {
+    margin-bottom: var(--spaceL);
+  }
+
+  .description {
+    margin-bottom: var(--spaceL);
+  }
+
+  .buttonGroup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spaceM);
+    margin-top: var(--spaceM);
+  }
+
+  .cardGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spaceM);
+    width: 100%;
+  }
+
+  .statCard {
+    background: color-mix(in lab, var(--backgroundLight) 80%, transparent);
+    border: 1px solid color-mix(in lab, var(--text) 12%, transparent);
+    border-radius: 12px;
+    padding: var(--spaceL);
+    backdrop-filter: blur(12px);
+  }
+
+  .statHeader {
+    font-size: var(--fontSizeBodyS);
+    font-weight: var(--fontWeightBold);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--spaceXS);
+  }
+
+  .statTitle {
+    font-size: var(--fontSizeH4);
+    font-weight: var(--fontWeightBold);
+    color: var(--textTitle);
+    margin-bottom: var(--spaceS);
+  }
+
+  .statText {
+    font-size: var(--fontSizeBodyM);
+    color: var(--textBody);
+    line-height: var(--lineHeightBody);
+  }
+}

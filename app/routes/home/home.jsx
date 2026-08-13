@@ -8,6 +8,7 @@ import { Intro } from './intro';
 import { Profile } from './profile';
 import { ProjectSummary } from './project-summary';
 import { ProjectVault } from '~/components/project-vault';
+import { ResumeSection } from './resume-section';
 import { useEffect, useRef, useState } from 'react';
 import config from '~/config.json';
 import styles from './home.module.css';
@@ -47,10 +48,11 @@ export const Home = () => {
   const projectTwo = useRef();
   const projectThree = useRef();
   const projectFour = useRef();
+  const resume = useRef();
   const details = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, projectThree, projectFour, details];
+    const sections = [intro, projectOne, projectTwo, projectThree, projectFour, resume, details];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -173,6 +175,11 @@ export const Home = () => {
         }}
       />
       <ProjectVault />
+      <ResumeSection
+        sectionRef={resume}
+        visible={visibleSections.includes(resume.current)}
+        id="resume"
+      />
       <Profile
         sectionRef={details}
         visible={visibleSections.includes(details.current)}
