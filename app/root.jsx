@@ -41,11 +41,11 @@ export const links = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
   { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
   { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap' },
-  { rel: 'manifest', href: '/manifest.json?v=4' },
-  { rel: 'icon', href: '/favicon.ico?v=4', sizes: 'any' },
-  { rel: 'icon', href: '/favicon.svg?v=4', type: 'image/svg+xml' },
-  { rel: 'shortcut icon', href: '/shortcut.png?v=4', type: 'image/png' },
-  { rel: 'apple-touch-icon', href: '/apple-touch-icon.png?v=4' },
+  { rel: 'manifest', href: '/manifest.json' },
+  { rel: 'icon', href: '/favicon-v5.ico', sizes: 'any' },
+  { rel: 'icon', href: '/favicon-v5.svg', type: 'image/svg+xml' },
+  { rel: 'shortcut icon', href: '/shortcut-v5.png', type: 'image/png' },
+  { rel: 'apple-touch-icon', href: '/apple-touch-icon-v5.png' },
   { rel: 'author', href: '/humans.txt', type: 'text/plain' },
 ];
 
