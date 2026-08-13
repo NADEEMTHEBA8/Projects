@@ -91,7 +91,7 @@
 }
 
 .model {
-  --width: 220%;
+  --width: 150%;
   --aspectRatio: 12 / 10;
 
   min-width: var(--width);
@@ -101,14 +101,14 @@
 
   &[data-device='laptop'] {
     top: 2%;
-    left: 10%;
+    left: 0%;
 
     @media (--mediaDesktop) {
-      --width: 220%;
+      --width: 150%;
     }
 
     @media (--mediaTablet) {
-      --width: 150%;
+      --width: 120%;
 
       top: 5%;
       left: 0;
