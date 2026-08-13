@@ -1,13 +1,13 @@
 @layer layout {
   .navbar {
-    --headerNavFontSize: calc((16 / 16) * 1rem);
+    --headerNavFontSize: calc((32 / 16) * 1rem);
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     padding: 0;
-    width: calc(var(--space2XL) * 1.2);
+    width: calc(var(--space2XL) * 1.8);
     position: fixed;
     top: var(--spaceOuter);
     left: var(--spaceOuter);
@@ -16,7 +16,7 @@
     isolation: isolate;
 
     @media (--mediaMobile) {
-      --headerNavFontSize: calc((24 / 16) * 1rem);
+      --headerNavFontSize: calc((36 / 16) * 1rem);
     }
 
     @media (--mediaMobile), (--mediaMobileLS) {
@@ -27,14 +27,14 @@
   .logo {
     display: flex;
     position: relative;
-    padding: var(--spaceS) var(--spaceS) var(--spaceM);
+    padding: var(--spaceS) var(--spaceS) var(--spaceL);
     z-index: var(--zIndex2);
-    transform: scale(1.0);
+    transform: scale(1.25);
     transform-origin: top center;
 
     @media (--mediaMobile) {
       padding-bottom: var(--spaceS);
-      transform: scale(1.0);
+      transform: scale(1.1);
     }
   }
 
@@ -60,9 +60,9 @@
   }
 
   .navLink {
-    padding: var(--spaceM) var(--spaceS);
+    padding: var(--spaceXL) var(--spaceL);
     color: color-mix(in lab, var(--text) 80%, transparent);
-    font-weight: var(--fontWeightMedium);
+    font-weight: var(--fontWeightBold);
     font-size: var(--headerNavFontSize);
     letter-spacing: 0.05em;
     text-decoration: none;
@@ -133,16 +133,16 @@
     align-items: center;
     justify-content: center;
     padding: var(--spaceS);
-    width: calc(var(--space2XL) * 0.9);
-    height: calc(var(--space2XL) * 0.9);
+    width: calc(var(--space2XL) * 1.5);
+    height: calc(var(--space2XL) * 1.5);
     color: var(--textLight);
-    transform: scale(1.1);
+    transform: scale(2.0);
     transition: color var(--durationM) var(--bezierFastoutSlowin), transform var(--durationM) ease;
 
     &:hover,
     &:active {
       color: var(--accent);
-      transform: scale(1.25);
+      transform: scale(2.2);
     }
   }
 
