@@ -30,14 +30,17 @@ export function Terminal() {
   const [history, setHistory] = useState([
     { type: 'output', text: 'Welcome to Nadeem Theba CLI Terminal v2.4 (Type "help" for commands)' },
   ]);
-  const bottomRef = useRef(null);
+  const terminalBodyRef = useRef(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (terminalBodyRef.current) {
+      terminalBodyRef.current.scrollTop = terminalBodyRef.current.scrollHeight;
+    }
   }, [history]);
 
   const handleSubmit = e => {
     e.preventDefault();
+    e.stopPropagation();
     const cmd = input.trim().toLowerCase();
     if (!cmd) return;
 
@@ -72,7 +75,7 @@ export function Terminal() {
         <div className={styles.title}>nadeem@data-eng-macbook:~</div>
       </div>
 
-      <div className={styles.terminalBody}>
+      <div className={styles.terminalBody} ref={terminalBodyRef}>
         {history.map((item, idx) => (
           <div key={idx} className={item.type === 'input' ? styles.inputLine : styles.outputLine}>
             <pre className={styles.pre}>{item.text}</pre>
@@ -88,7 +91,6 @@ export function Terminal() {
             placeholder="Type command ('help', 'stack', 'metrics')..."
           />
         </form>
-        <div ref={bottomRef} />
       </div>
     </div>
   );
