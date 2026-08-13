@@ -36,7 +36,7 @@ export const meta = () => {
   return baseMeta({ title, description, prefix: 'Projects' });
 };
 
-export const SupplyChainTelemetryPipeline = () => {
+export const SupplyChainTelemetry = () => {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
 
