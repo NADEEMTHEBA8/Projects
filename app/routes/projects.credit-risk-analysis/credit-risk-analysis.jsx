@@ -1,4 +1,5 @@
 import creditRiskTexture from '~/assets/credit-risk-cover.gif';
+import creditRiskAwsCloud from '~/assets/credit-risk-aws-cloud.png';
 import { Button } from '~/components/button';
 import { Footer } from '~/components/footer';
 import { Heading } from '~/components/heading';
@@ -191,6 +192,30 @@ export const CreditRiskAnalysis = () => {
                   </marker>
                 </defs>
               </svg>
+            </div>
+          </ProjectSectionContent>
+        </ProjectSection>
+
+        {/* AWS Cloud Infrastructure & Architecture Proof */}
+        <ProjectSection>
+          <ProjectSectionContent>
+            <ProjectTextRow>
+              <ProjectSectionHeading>AWS Cloud Infrastructure &amp; Data Lake Integration</ProjectSectionHeading>
+              <ProjectSectionText>
+                Cloud architecture blueprint mapping out-of-core DuckDB processing over S3 Parquet tables and threshold-tuned XGBoost risk scoring:
+              </ProjectSectionText>
+            </ProjectTextRow>
+
+            <div style={{ marginTop: '2.5rem' }}>
+              <ProjectImage
+                raised
+                srcSet={`${creditRiskAwsCloud} 1280w`}
+                width={1280}
+                height={720}
+                placeholder={creditRiskAwsCloud}
+                alt="AWS Cloud Infrastructure & DuckDB Out-of-Core Processing Blueprint"
+                sizes="100vw"
+              />
             </div>
           </ProjectSectionContent>
         </ProjectSection>

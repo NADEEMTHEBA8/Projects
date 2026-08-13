@@ -1,4 +1,7 @@
 import fraudTexture from '~/assets/fraud-cover.gif';
+import fraudS3Buckets from '~/assets/fraud-aws-s3-buckets.png';
+import fraudDeltaPartitions from '~/assets/fraud-aws-delta-partitions.png';
+import fraudIamPermissions from '~/assets/fraud-aws-iam-permissions.png';
 import { Button } from '~/components/button';
 import { Footer } from '~/components/footer';
 import { Heading } from '~/components/heading';
@@ -191,6 +194,65 @@ export const RealtimeFraudFeatureStore = () => {
                   </marker>
                 </defs>
               </svg>
+            </div>
+          </ProjectSectionContent>
+        </ProjectSection>
+
+        {/* AWS Cloud Infrastructure & Console Proof */}
+        <ProjectSection>
+          <ProjectSectionContent>
+            <ProjectTextRow>
+              <ProjectSectionHeading>AWS Cloud Infrastructure &amp; Console Execution</ProjectSectionHeading>
+              <ProjectSectionText>
+                Production AWS management console screenshots displaying S3 bucket structure, Delta Lake physical table partitions, and IAM security role policies:
+              </ProjectSectionText>
+            </ProjectTextRow>
+
+            <div style={{ display: 'grid', gap: '3rem', marginTop: '2.5rem' }}>
+              <div>
+                <Heading level={4} as="h4" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>
+                  1. AWS S3 Storage Buckets Overview
+                </Heading>
+                <ProjectImage
+                  raised
+                  srcSet={`${fraudS3Buckets} 1280w`}
+                  width={1280}
+                  height={720}
+                  placeholder={fraudS3Buckets}
+                  alt="AWS S3 Storage Buckets Overview"
+                  sizes="100vw"
+                />
+              </div>
+
+              <div>
+                <Heading level={4} as="h4" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>
+                  2. AWS S3 Delta Lake Table Partitions &amp; Log Commit Files
+                </Heading>
+                <ProjectImage
+                  raised
+                  srcSet={`${fraudDeltaPartitions} 1280w`}
+                  width={1280}
+                  height={720}
+                  placeholder={fraudDeltaPartitions}
+                  alt="AWS S3 Delta Lake Table Partitions"
+                  sizes="100vw"
+                />
+              </div>
+
+              <div>
+                <Heading level={4} as="h4" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>
+                  3. AWS IAM Service Account Roles &amp; Security Access Policies
+                </Heading>
+                <ProjectImage
+                  raised
+                  srcSet={`${fraudIamPermissions} 1280w`}
+                  width={1280}
+                  height={720}
+                  placeholder={fraudIamPermissions}
+                  alt="AWS IAM Security Roles and Access Control"
+                  sizes="100vw"
+                />
+              </div>
             </div>
           </ProjectSectionContent>
         </ProjectSection>

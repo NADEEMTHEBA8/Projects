@@ -1,4 +1,7 @@
 import supplyChainTexture from '~/assets/supply-chain-cover.gif';
+import supplyChainS3Folders from '~/assets/supply-chain-s3-folders.png';
+import supplyChainHivePartitions from '~/assets/supply-chain-hive-partitions.png';
+import supplyChainSnappyParquet from '~/assets/supply-chain-snappy-parquet.png';
 import { Button } from '~/components/button';
 import { Footer } from '~/components/footer';
 import { Heading } from '~/components/heading';
@@ -186,6 +189,65 @@ export const SupplyChainTelemetry = () => {
                   </marker>
                 </defs>
               </svg>
+            </div>
+          </ProjectSectionContent>
+        </ProjectSection>
+
+        {/* AWS Cloud Infrastructure & Console Proof */}
+        <ProjectSection>
+          <ProjectSectionContent>
+            <ProjectTextRow>
+              <ProjectSectionHeading>AWS Cloud Infrastructure &amp; Console Execution</ProjectSectionHeading>
+              <ProjectSectionText>
+                Real production AWS S3 console screenshots displaying Medallion lakehouse folder structure, Hive-style physical partitioning by <code>(plant_id, event_date)</code>, and Snappy compressed Parquet objects:
+              </ProjectSectionText>
+            </ProjectTextRow>
+
+            <div style={{ display: 'grid', gap: '3rem', marginTop: '2.5rem' }}>
+              <div>
+                <Heading level={4} as="h4" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>
+                  1. AWS S3 Medallion Lakehouse Directory Structure
+                </Heading>
+                <ProjectImage
+                  raised
+                  srcSet={`${supplyChainS3Folders} 1280w`}
+                  width={1280}
+                  height={720}
+                  placeholder={supplyChainS3Folders}
+                  alt="AWS S3 Medallion Folder Structure"
+                  sizes="100vw"
+                />
+              </div>
+
+              <div>
+                <Heading level={4} as="h4" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>
+                  2. AWS S3 Physical Hive Partitions (plant_id / event_date)
+                </Heading>
+                <ProjectImage
+                  raised
+                  srcSet={`${supplyChainHivePartitions} 1280w`}
+                  width={1280}
+                  height={720}
+                  placeholder={supplyChainHivePartitions}
+                  alt="AWS S3 Hive Style Partition Directories"
+                  sizes="100vw"
+                />
+              </div>
+
+              <div>
+                <Heading level={4} as="h4" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>
+                  3. AWS S3 Snappy Parquet Telemetry Payload Objects
+                </Heading>
+                <ProjectImage
+                  raised
+                  srcSet={`${supplyChainSnappyParquet} 1280w`}
+                  width={1280}
+                  height={720}
+                  placeholder={supplyChainSnappyParquet}
+                  alt="AWS S3 Snappy Compressed Parquet Objects"
+                  sizes="100vw"
+                />
+              </div>
             </div>
           </ProjectSectionContent>
         </ProjectSection>

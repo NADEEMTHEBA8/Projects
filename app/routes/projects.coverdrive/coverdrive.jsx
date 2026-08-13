@@ -1,4 +1,7 @@
 import coverdriveTexture from '~/assets/coverdrive-cover.gif';
+import coverdriveS3Medallion from '~/assets/coverdrive-s3-medallion.png';
+import coverdriveAthenaSql from '~/assets/coverdrive-athena-sql.png';
+import coverdriveAirflowDag from '~/assets/coverdrive-airflow-dag.png';
 import { Button } from '~/components/button';
 import { Footer } from '~/components/footer';
 import { Heading } from '~/components/heading';
@@ -191,6 +194,65 @@ export const Coverdrive = () => {
                   </marker>
                 </defs>
               </svg>
+            </div>
+          </ProjectSectionContent>
+        </ProjectSection>
+
+        {/* AWS Cloud Infrastructure & Console Proof */}
+        <ProjectSection>
+          <ProjectSectionContent>
+            <ProjectTextRow>
+              <ProjectSectionHeading>AWS Cloud Infrastructure &amp; Console Execution</ProjectSectionHeading>
+              <ProjectSectionText>
+                Real production console screenshots of AWS S3 Medallion storage partitions, AWS Athena SQL analytical query benchmarks, and Apache Airflow DAG execution graphs:
+              </ProjectSectionText>
+            </ProjectTextRow>
+
+            <div style={{ display: 'grid', gap: '3rem', marginTop: '2.5rem' }}>
+              <div>
+                <Heading level={4} as="h4" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>
+                  1. AWS S3 Medallion Lakehouse Storage Partitions
+                </Heading>
+                <ProjectImage
+                  raised
+                  srcSet={`${coverdriveS3Medallion} 1280w`}
+                  width={1280}
+                  height={720}
+                  placeholder={coverdriveS3Medallion}
+                  alt="AWS S3 Medallion Storage Partition Structure"
+                  sizes="100vw"
+                />
+              </div>
+
+              <div>
+                <Heading level={4} as="h4" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>
+                  2. AWS Athena Serverless SQL Query Execution over Parquet
+                </Heading>
+                <ProjectImage
+                  raised
+                  srcSet={`${coverdriveAthenaSql} 1280w`}
+                  width={1280}
+                  height={720}
+                  placeholder={coverdriveAthenaSql}
+                  alt="AWS Athena Serverless SQL Benchmark"
+                  sizes="100vw"
+                />
+              </div>
+
+              <div>
+                <Heading level={4} as="h4" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>
+                  3. Apache Airflow Production Orchestration DAG Run
+                </Heading>
+                <ProjectImage
+                  raised
+                  srcSet={`${coverdriveAirflowDag} 1280w`}
+                  width={1280}
+                  height={720}
+                  placeholder={coverdriveAirflowDag}
+                  alt="Apache Airflow Production Pipeline Execution"
+                  sizes="100vw"
+                />
+              </div>
             </div>
           </ProjectSectionContent>
         </ProjectSection>
