@@ -108,6 +108,10 @@ export default function App() {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon-v5.ico" sizes="any" />
+        <link rel="icon" href="/favicon-v5.svg" type="image/svg+xml" />
+        <link rel="shortcut icon" href="/shortcut-v5.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon-v5.png" />
         {/* Theme color doesn't support oklch so I'm hard coding these hexes for now */}
         <meta name="theme-color" content={theme === 'dark' ? '#111' : '#F2F2F2'} />
         <meta
