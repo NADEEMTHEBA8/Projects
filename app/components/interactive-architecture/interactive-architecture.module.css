@@ -90,13 +90,13 @@
 .detailTitle {
   font-size: var(--fontSizeBodyM);
   font-weight: var(--fontWeightBold);
-  color: var(--textTitle);
+  color: #ffffff;
 }
 
 .detailBadge {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid var(--border);
-  color: var(--accent);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #00e5ff;
   font-size: 11px;
   font-weight: var(--fontWeightBold);
   padding: 4px 10px;
@@ -105,7 +105,7 @@
 
 .detailDesc {
   font-size: var(--fontSizeBodyS);
-  color: var(--textBody);
+  color: #cbd5e1;
   margin: 0 0 1rem 0;
   line-height: 1.5;
 }
