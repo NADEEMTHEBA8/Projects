@@ -73,9 +73,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
               </div>
               <div className={styles.image}>
                 <Image
-                  reveal
-                  delay={100}
-                  placeholder={profileImgPlaceholder}
+                  src={profileImg}
                   srcSet={`${profileImg} 480w, ${profileImgLarge} 960w`}
                   width={960}
                   height={1280}
