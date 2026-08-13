@@ -14,6 +14,7 @@ import {
   ProjectSectionText,
   ProjectTextRow,
 } from '~/layouts/project';
+import { DisplacementSphere } from '~/routes/home/displacement-sphere';
 import { baseMeta } from '~/utils/meta';
 import styles from './uses.module.css';
 
@@ -28,11 +29,7 @@ export const Uses = () => {
   return (
     <>
       <ProjectContainer className={styles.uses}>
-        <ProjectBackground
-          src={usesBackground}
-          placeholder={usesBackgroundPlaceholder}
-          opacity={0.7}
-        />
+        <DisplacementSphere />
         <ProjectHeader
           title="Uses & Technical Stack"
           description="A detailed overview of the core technologies, distributed compute engines, streaming frameworks, and cloud tools I rely on to build resilient data pipelines and lakehouses."

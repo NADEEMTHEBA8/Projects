@@ -12,6 +12,7 @@ import { Link as RouterLink, useLoaderData } from '@remix-run/react';
 import { useState, useEffect } from 'react';
 import { formatDate } from '~/utils/date';
 import { classes, cssProps } from '~/utils/style';
+import { DisplacementSphere } from '~/routes/home/displacement-sphere';
 import styles from './articles.module.css';
 
 function ArticlesPost({ slug, frontmatter, timecode, index }) {
@@ -167,6 +168,7 @@ export function Articles() {
   return (
     <article className={styles.articles}>
       <Section className={styles.content}>
+        <DisplacementSphere />
         {!isSingleColumn && (
           <div className={styles.grid}>
             {postList}

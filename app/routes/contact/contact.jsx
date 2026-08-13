@@ -16,6 +16,7 @@ import { baseMeta } from '~/utils/meta';
 import { Form, useActionData, useNavigation } from '@remix-run/react';
 import { json } from '@remix-run/cloudflare';
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
+import { DisplacementSphere } from '~/routes/home/displacement-sphere';
 import styles from './contact.module.css';
 
 export const meta = () => {
@@ -105,7 +106,8 @@ export const Contact = () => {
   const sending = state === 'submitting';
 
   return (
-    <Section className={styles.contact}>
+    <Section className={styles.contact} as="section">
+      <DisplacementSphere />
       <Transition unmount in={!actionData?.success} timeout={1600}>
         {({ status, nodeRef }) => (
           <Form

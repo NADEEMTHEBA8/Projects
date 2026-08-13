@@ -12,6 +12,7 @@ import {
   ProjectSectionText,
   ProjectTextRow,
 } from '~/layouts/project';
+import { DisplacementSphere } from '~/routes/home/displacement-sphere';
 import { baseMeta } from '~/utils/meta';
 import styles from './resume.module.css';
 
@@ -86,11 +87,7 @@ export const Resume = () => {
   return (
     <>
       <ProjectContainer className={styles.resume}>
-        <ProjectBackground
-          src={usesBackground}
-          placeholder={usesBackgroundPlaceholder}
-          opacity={0.5}
-        />
+        <DisplacementSphere />
 
         {/* ── Sticky Download Strip ─────────────────── */}
         <div className={styles.downloadStrip}>
