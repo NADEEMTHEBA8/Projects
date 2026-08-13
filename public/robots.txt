@@ -1,1 +1,4 @@
 User-agent: *
+Allow: /
+
+Sitemap: https://projects-umber-eight-21.vercel.app/sitemap.xml

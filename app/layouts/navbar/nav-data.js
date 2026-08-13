@@ -31,7 +31,7 @@ export const socialLinks = [
   {
     label: 'LinkedIn',
     url: `https://linkedin.com/in/${config.linkedin}`,
-    icon: 'figma',
+    icon: 'linkedin',
   },
   {
     label: 'Github',

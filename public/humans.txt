@@ -3,37 +3,32 @@ __  __  __
  \ \/\ \
   \/  \/
 
-The humans.txt file explains the team, technology,
-and graphic assets behind this site humanstxt.org.
+The humans.txt file explains the team, technology, and craft behind this site humanstxt.org.
 
 _______________________________________________________________________________
 
-DESIGNER | デザイナー
+DEVELOPER & DATA ENGINEER | データエンジニア
 
-Hamish Williams
-Hand crafted design & web development
+Nadeem Theba
+Senior Data Engineer & AI Specialist
+PySpark · Delta Lake · dbt · Kafka · Databricks · AWS · GCP
 
-Design tools:
-Figma
-Photoshop
-Blender
-
-twitter.com/hamishmw
-github.com/hamishmw
+github.com/NADEEMTHEBA8
+linkedin.com/in/nadeem-theba-602862208
 
 _______________________________________________________________________________
 
 TECHNOLOGY | テクノロジー
 
-React
-Remix
-Three.js
+React 18 / Remix Vite
+Three.js (WebGL 3D Displacement Sphere)
 Framer Motion
+Python / PySpark / DuckDB / FastAPI / Redis
+dbt Core / Delta Lake / Kafka / Airflow / Terraform
 
 _______________________________________________________________________________
 
 FONTS | フォント
 
-Gotham
-IPA Gothic Regular
-Hiragino Kaku Gothic W8
+Gotham Book & Gotham Medium
+Noto Sans Devanagari
