@@ -68,7 +68,7 @@ export const loader = async ({ request, context }) => {
   });
 
   const session = await getSession(request.headers.get('Cookie'));
-  const theme = session.get('theme') || 'dark';
+  const theme = session.get('theme') || 'light';
 
   return json(
     { canonicalUrl, theme },
